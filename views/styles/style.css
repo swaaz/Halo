@@ -1,0 +1,9 @@
+body{
+    background-color: pink;
+    width: 100%;
+    min-height: 100%;
+}
+
+.header{
+    color: aqua;
+}

@@ -1,0 +1,24 @@
+{
+  "name": "halo",
+  "version": "1.0.0",
+  "description": "Game built for a Hackathon on a Hackathon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swaaz/Halo.git"
+  },
+  "author": "swaaz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swaaz/Halo/issues"
+  },
+  "homepage": "https://github.com/swaaz/Halo#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.9",
+    "pug": "^3.0.2"
+  }
+}
