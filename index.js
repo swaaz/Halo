@@ -18,6 +18,9 @@ app.get('/chat', (req, res) => {
     res.render('chat');
 })
 
+app.get('/grid', (req, res) => {
+    res.render('grid');
+})
 
 
 
