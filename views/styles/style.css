@@ -2,7 +2,7 @@
 
 html {
     height: 100%;
-    wdith: 100%;
+    width: 100%;
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
     overflow: hidden;
   }
@@ -76,7 +76,7 @@ html {
   
 
 body{
-   
+
     width: 100%;
     height: 100%;
     font-size: 30px;
@@ -91,11 +91,11 @@ body{
 .box{
     height: 400px;
     position: absolute;
-	top:0;
-	bottom: 0;
-	left: 0;
-	right: 0;  	
-	margin: auto; 
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;  	
+    margin: auto; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -160,3 +160,39 @@ input {
     width: 100% ;
     height: 100%;
   } 
+
+/* grid */
+
+.GridContainer{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  align-items: center;
+  justify-items: center;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+.box{
+  position: relative;
+  background: white;
+  width: 100px;
+  height: 100px;
+  cursor : pointer;
+  transition : all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+}
+.box:hover{
+  background: #6AC055;
+  transition : all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+}
+
+/* chat */
+#form { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: fixed; bottom: 0; left: 0; right: 0; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); margin-bottom: 3rem; }
+#input { border: none; padding: 0 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem; }
+#input:focus { outline: none; }
+#form > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
+
+#messages { list-style-type: none; margin: 0; padding: 0; }
+#messages > li { padding: 0.5rem 1rem; }
+#messages > li:nth-child(odd) { background: #efefef; }

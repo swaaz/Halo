@@ -14,4 +14,14 @@ app.get('/joinroom', (req , res) => {
     res.render('joinroom');
 })
 
-app.listen('5000', () => console.log('Server is running..'))
+app.get('/chat', (req, res) => {
+    res.render('chat');
+})
+
+app.get('/grid', (req, res) => {
+    res.render('grid');
+})
+
+
+
+app.listen('5000', () => console.log('Server is running in port 5000..'))
