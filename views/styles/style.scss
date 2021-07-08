@@ -1,4 +1,4 @@
-// @import compass
+@import compass;
 
 
 // n is number of stars required
@@ -11,6 +11,7 @@
 
   @return unquote($value)
 }
+
 $shadows-small:  multiple-box-shadow(700);
 $shadows-medium: multiple-box-shadow(200);
 $shadows-big:    multiple-box-shadow(100);
@@ -22,12 +23,12 @@ html
     overflow: hidden;
   }
     
-#stars
+#stars1
 {
     width: 1px;
     height: 1px;
     background: transparent;
-    box-shadow: $shadows-small;
+    box-shadow: $shadows-small ;
     animation: animStar 50s linear infinite;
       
     &:after
@@ -82,31 +83,6 @@ html
       }
   }
 
-#title
-{
-    position: absolute ;
-  top: 50%;
-  left: 0;
-  right: 0;
-  
-  color: #FFF;
-  text-align: center;
-  font-family: 'lato',sans-serif;
-  font-weight: 300;
-  font-size: 50px;
-  letter-spacing: 10px;
-  
-  margin-top: -60px;
-  padding-left: 10px;
-  
-  span
-   {
-    background: -webkit-linear-gradient(white, #38495a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-   }
-    
-}
 @keyframes animStar
   {
     from	
