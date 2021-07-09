@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
 @font-face {
-  font-family: 'arcade';
-  src: local('ArcadeClassic.woff') format('woff'), /* Modern Browsers */
-       local('arcade.ttf')  format('truetype'), /* Safari, Android, iOS */
-       local('ArcadeClassic.svg') format('svg'), /* Legacy iOS */  
-       local('ArcadeClassic.eot') format('embedded-opentype'); /* IE6-IE8 */
-  src: local('ArcadeClassic.eot'); /* IE9 Compat Modes */
-  style: normal;
-  weight: 400;
+  font-family: 'ArcadeClassic';
+  src: url('ArcadeClassic.eot');
+  src: url('ArcadeClassic.eot?#iefix') format('embedded-opentype'),
+      url('ArcadeClassic.woff2') format('woff2'),
+      url('ArcadeClassic.woff') format('woff'),
+      url('ArcadeClassic.svg#ArcadeClassic') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
+
 
 
 html {
@@ -93,12 +95,13 @@ body{
     height: 100%;
     font-size: 30px;
     font-weight: bold;
+    font-family : 'ArcadeClassic';
 }
 
 .header{
     margin-top: auto;
     color: white;
-    font-family : 'arcade';
+    font-family : 'ArcadeClassic';
 }
 
 .container{
