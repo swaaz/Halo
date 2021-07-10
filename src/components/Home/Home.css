@@ -1,0 +1,83 @@
+.header{
+    margin-top: auto;
+    color: white;
+    font-family : 'ArcadeClassic';
+}
+
+.container{
+    height: 400px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;  	
+    margin: auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    /* font-family: 'Poppins', sans-serif; */
+}
+
+a{
+  text-decoration:none;
+  color: inherit;
+}
+
+.items{
+    min-height: 200px;
+    min-width: 300px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    vertical-align: middle;
+
+}
+
+.item{  
+    transition: background-color 0.5s ease;
+    border: 1px solid white; 
+}
+
+.itemlast{
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-between;
+    /* align-items: stretch; */
+}
+
+.iteml{
+    /* width: 40%; */
+    transition: background-color 0.5s ease;
+    border: 1px solid white;
+}
+
+.item1{
+    width: 60%;
+}
+
+.item2{
+    width: 30%;
+}
+
+.item:hover, .iteml:hover{
+    background-color: white;
+    color: rgb(2, 2, 22);
+}
+
+.itemsmul{
+    min-height: 250px;
+}
+
+.itemsjr{
+    min-height: 120px;
+}
+
+input {
+    box-sizing: border-box;
+    width: 100% ;
+    height: 100%;
+  } 
