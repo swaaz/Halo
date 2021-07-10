@@ -3,11 +3,12 @@ extends layout
 block content
     .container 
         #title 
-            h1.header Halo 
-        .itemsmul.items 
+            h1.header Halo        
+        .itemsmul.items   
             .item Enter Name
             .item Create Room 
-            .item Join Room
+            .item 
+                a(href='joinroom') Join Room
             .itemlast 
                 .iteml.item1 Settings 
                 .iteml.item2 Exit
