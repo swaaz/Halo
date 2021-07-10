@@ -1,0 +1,46 @@
+.gameContainer{
+    color: white;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;  	
+    margin: auto; 
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .gameInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .score{
+    color: inherit;
+  }
+  
+  .GridContainer{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    align-items: center;
+    justify-items: center;
+    column-gap: 10px;
+    row-gap: 10px;
+    width: 50%;
+    height: 75%;
+  }
+  .box{
+    position: relative;
+    background: white;
+    width: 100px;
+    height: 100px;
+    cursor : pointer;
+    transition : all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+  }
+  .box:hover{
+    background: #6AC055;
+    transition : all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+  }
