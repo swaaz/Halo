@@ -120,6 +120,11 @@ body{
     /* font-family: 'Poppins', sans-serif; */
 }
 
+a{
+  text-decoration:none;
+  color: inherit;
+}
+
 .items{
     min-height: 200px;
     min-width: 300px;
@@ -179,9 +184,30 @@ input {
 
 /* grid */
 
+.gameContainer{
+  color: white;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;  	
+  margin: auto; 
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.gameInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score{
+  color: inherit;
+}
+
 .GridContainer{
-  width: 100%;
-  height: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
