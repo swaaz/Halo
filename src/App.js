@@ -20,7 +20,7 @@ function App() {
         <Switch>
         <Route exact path='/multi' component={Multiplayer} />
           <Route exact path='/single' component={SinglePlayer} />
-          <Route exact path="/" component={Home} />
+          <Route  path="/" component={Home} />
         </Switch>
     </div>
     </Router>
