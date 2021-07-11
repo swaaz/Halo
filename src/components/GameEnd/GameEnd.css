@@ -1,0 +1,9 @@
+.game-end{
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #17212d;
+}
