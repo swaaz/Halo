@@ -2,65 +2,52 @@ import React, { useState } from 'react'
 import './SinglePlayer.css';
 const SinglePlayer = () => {
 
-    const [color, setColor] = useState([
-        {
-            isActive : false
-        },
-        {
-            isActive : false
-        },
-        {
-            isActive : false
-        },
-        {
-            isActive : false
-        },
-        {
-            isActive : false
-        },
-        {
-            isActive : false
-        },
-    ]);
+    
     const [path, setPath] = useState([]);
     const [currPath, setCurrPath] = useState([]);
     const [isPlaying, setIsPlaying] = useState(true);
     const [counter, setCounter] = useState(0);
     const [tempCounter, setTempCounter] = useState(counter);
 
+    const clearScreen = () => {
+        for(let i=1; i<= 25; ++i){
+            document.getElementById(i.toString()).style.backgroundColor = 'white'
+        }
+    }
     const botTurn = () => {
         const randomVal =  Math.floor(Math.random() * 25) + 1 ;
         console.log('bot');
-        setPath(prev => [...prev, randomVal]);
         setIsPlaying(true);
+        setPath(prev => [...prev, randomVal]);
         setCounter(prev => prev + 1);
         setTempCounter(counter + 3);
     }
 
     const clickHandler = (e) => {
         if(isPlaying){
+            document.getElementById(e.target.id).style.backgroundColor = 'green';
+
             if(tempCounter > 1){
-                // console.log(path[currPath.length]);
-                if(path[currPath.length] !== parseInt(e.target.id) && tempCounter !== 1) alert('You lost bruh!! Oops!!');
+                if(path[currPath.length] !== parseInt(e.target.id) && tempCounter !== 1) {
+                    document.getElementById(e.target.id).style.backgroundColor = '#f00';
+                    alert('You lost bruh!! Oops!!');
+                }
                 setTempCounter(prev => prev - 1);
                 setCurrPath((prev) => [...prev, parseInt(e.target.id)]);
             }
             else{
-
                 console.log(e.target.id);
                 setPath(prev => [...prev, parseInt(e.target.id)]);
+                clearScreen();
                 setCurrPath([]);
                 setCounter(prev => prev + 1);
                 setTempCounter(counter + 3);
-                // const backgroundStyle = window.getComputedStyle(e.target, null).getPropertyValue("background-color");
-                // console.log(backgroundStyle);
-                // setCounter(prev => prev + 1);
-                // setIsPlaying(false);
                 botTurn();
             }
 
         }
     }
+
     console.log('path');
     console.log(path);
     console.log('currpath');
@@ -69,7 +56,6 @@ const SinglePlayer = () => {
     console.log(counter);
     console.log(' temp');
     console.log(tempCounter);
-    // console.log(color[1].isActive);
     return (
         <div>
             <div className="gameContainer">
