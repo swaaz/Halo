@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
 import GameEnd from '../GameEnd/GameEnd';
 import './SinglePlayer.css';
+import Sound from 'react-sound';
+import bgMusic from '../../audio/bg.mp3';
+import useSound from 'use-sound';
+import SinglePlayerStart from '../SinglePlayerStart/SinglePlayerStart'
 const SinglePlayer = () => {
 
     const [path, setPath] = useState([]);
     const [currPath, setCurrPath] = useState([]);
     const [isPlaying, setIsPlaying] = useState(true);
+    const [isGameStarted, setIsGameStarted] = useState(false);
     const [isGameOver, setIsGameOver] = useState(false);
     const [counter, setCounter] = useState(0);
     const [tempCounter, setTempCounter] = useState(counter);
@@ -42,7 +47,7 @@ const SinglePlayer = () => {
     }
 
     const clickHandler = (e) => {
-        if(isPlaying){
+        if(isPlaying && !isGameOver && isGameStarted){
             document.getElementById(e.target.id).style.backgroundColor = 'green';
 
             if(tempCounter > 1){
@@ -66,6 +71,8 @@ const SinglePlayer = () => {
         }
     }
 
+    const onStart = () => setIsGameStarted(true);
+
     // console.log('path');
     // console.log(path);
     // console.log('currpath');
@@ -76,11 +83,12 @@ const SinglePlayer = () => {
     // console.log(tempCounter);
     return (
         <div>
+            <Sound url={bgMusic} playStatus={Sound.status.PLAYING} loop={true} />
             <div className="gameContainer">
                 <div className="gameInfo">
                     <h1 className="header">Halo </h1>
                     <h4 className="header">Playing vs Bot </h4>
-                    <div className="score">Score</div>
+                    <div className="score">Score : {counter*10}</div>
                     <div className="score">Player Turn :
                         {
                             isPlaying? 'You' : 'Bot'
@@ -115,7 +123,10 @@ const SinglePlayer = () => {
                     <div onClick={clickHandler} className="box" id="25"></div>
                 </div>
                 {
-                    isGameOver? <GameEnd /> : null
+                    isGameStarted? null : <SinglePlayerStart onStart={onStart} />
+                }
+                {
+                    isGameOver? <GameEnd score={counter * 10} /> : null
                 }
             </div>
         </div>
