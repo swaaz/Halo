@@ -1,9 +1,10 @@
 import React from 'react'
 import './GameEnd.css';
-const GameEnd = () => {
+const GameEnd = (props) => {
     return (
         <div className="game-end">
-            Game Ended bruh : sadly :(
+            <p>Game Ended bruh : sadly :(</p>
+            <p>your score : {props.score}</p>
         </div>
     )
 }
