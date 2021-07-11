@@ -40,6 +40,14 @@
     cursor : pointer;
     transition : all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   }
+  .boxGreen{
+    position: relative;
+    background: green;
+    width: 100px;
+    height: 100px;
+    cursor : pointer;
+    transition : all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+  }
   .box:hover{
     background: #6AC055;
     transition : all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
