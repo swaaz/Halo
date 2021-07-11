@@ -26,6 +26,7 @@ a{
 }
 
 .items{
+    cursor: pointer;
     min-height: 200px;
     min-width: 300px;
     color: white;
