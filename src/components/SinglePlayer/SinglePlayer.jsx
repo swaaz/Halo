@@ -86,7 +86,7 @@ const SinglePlayer = () => {
             <Sound url={bgMusic} playStatus={Sound.status.PLAYING} loop={true} />
             <div className="gameContainer">
                 <div className="gameInfo">
-                    <h1 className="header">Halo </h1>
+                    <h1 className="header headerhalo">Halo </h1>
                     <h4 className="header">Playing vs Bot </h4>
                     <div className="score">Score : {counter*10}</div>
                     <div className="score">Player Turn :
