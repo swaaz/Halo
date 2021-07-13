@@ -21,7 +21,6 @@ io.on('connection', client => {
 
 		console.log(gameState);
 		if(gameOver) {
-			// client.emit
 			io.to(gameState.roomId).emit("gameOver", gameState);
 		}
 		else {
