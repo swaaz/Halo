@@ -1,13 +1,13 @@
 .gameContainer{
     color: white;
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     position: relative;
-    /* top:0;
+    top:0;
     bottom: 0;
     left: 0;
-    right: 0;  	 */
-    margin: 25vh auto; 
+    right: 0;  	
+    /* margin: 25vh auto;  */
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -29,10 +29,8 @@
     grid-template-rows: repeat(5, 1fr);
     align-items: center;
     justify-items: center;
-    column-gap: 10px;
-    row-gap: 10px;
-    width: 50%;
-    height: 75%;
+    column-gap: 15px;
+    row-gap: 15px;
   }
   .box{
     position: relative;
@@ -40,6 +38,7 @@
     width: 100px;
     height: 100px;
     cursor : pointer;
+    border-radius: 2px;
     transition : all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   }
   .boxGreen{
@@ -54,3 +53,58 @@
     background: #6AC055;
     transition : all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   }
+
+  @media only screen and (max-width: 850px) and (min-width: 769px){
+    /* For mobile phones: */
+    .gameContainer {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+
+      .gameInfo{
+        width: 30%;
+        height: 30%;
+      }
+      .box{
+        width: 80px;
+        height: 80px;
+      }
+      /* .headerhalo{
+        margin-bottom: 0;
+      }
+      .playerturn{
+        margin-bottom: 20px;
+      } */
+    } 
+
+  @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .gameContainer {
+      display: flex;
+      flex-direction: column;
+    }
+    .box{
+      width: 55px;
+      height: 55px;
+    }
+    .headerhalo{
+      margin-bottom: 0;
+    }
+    .playerturn{
+      margin-bottom: 20px;
+    }
+  }
+
+  @media only screen and (max-width: 1100px) and (min-width: 850px){
+    /* For mobile phones: */
+    .gameContainer {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+      .box{
+        width: 90px;
+        height: 90px;
+      }
+    }
