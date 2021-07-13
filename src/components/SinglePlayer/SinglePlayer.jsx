@@ -6,8 +6,10 @@ import bgMusic from '../../assets/audio/bg.mp3';
 import useSound from 'use-sound';
 import SinglePlayerStart from '../SinglePlayerStart/SinglePlayerStart'
 import clickSound from '../../assets/audio/click.mp3';
+import deathSound from '../../assets/audio/DeathSound.mp3';
 const SinglePlayer = () => {
     const [clickPlay] = useSound(clickSound);
+    const [deathPlay] = useSound(deathSound);
 
     const [path, setPath] = useState([]);
     const [currPath, setCurrPath] = useState([]);
@@ -18,24 +20,29 @@ const SinglePlayer = () => {
     const [tempCounter, setTempCounter] = useState(counter);
     const [isMusicPlaying, setIsMusicPlaying] = useState(true);
 
-    // 
+    // function to click after delay
     const delayClickFunction = (element) => {
         setTimeout(botClick(element), 50000);
     }
+    // function to clear color after delay
     const delayClearFunction = () => {
         setTimeout(clearScreen, 500);
     }
+    // function to pass player's turn to bot after delay
     const delayBotFunction = (lastElement) => {
         setTimeout(botTurn(lastElement), 999999);
     }
+    // function to clear grid
     const clearScreen = () => {
         for(let i=1; i<= 25; ++i){
             document.getElementById(i.toString()).style.backgroundColor = 'white'
         }
     }
+    // function to click on the box
     const botClick = (item) => {
        document.getElementById(item.toString()).style.backgroundColor = 'green';
     }
+    // function perform bot's turn
     const botTurn = (lastElement) => {
         const randomVal =  Math.floor(Math.random() * 25) + 1 ;
         // console.log('bot');
@@ -50,6 +57,7 @@ const SinglePlayer = () => {
         delayClearFunction();
     }
 
+    //function to capture the click of the user
     const clickHandler = (e) => {
         if(isPlaying && !isGameOver && isGameStarted){
             document.getElementById(e.target.id).style.backgroundColor = 'green';
@@ -57,6 +65,7 @@ const SinglePlayer = () => {
             
             if(tempCounter > 1){
                 if(path[currPath.length] !== parseInt(e.target.id) && tempCounter !== 1) {
+                    deathPlay();
                     document.getElementById(e.target.id).style.backgroundColor = '#f00';
                     setIsGameOver(true);
                 }
@@ -64,7 +73,6 @@ const SinglePlayer = () => {
                 setCurrPath((prev) => [...prev, parseInt(e.target.id)]);
             }
             else{
-                // console.log(e.target.id);
                 clearScreen();
                 setPath(prev => [...prev, parseInt(e.target.id)]);
                 setCurrPath([]);
@@ -110,31 +118,9 @@ const SinglePlayer = () => {
                     </div>
                 </div>
                 <div className="GridContainer">
-                    <div onClick={clickHandler} className="box" id="1"></div>
-                    <div onClick={clickHandler} className="box" id="2"></div>
-                    <div onClick={clickHandler} className="box" id="3"></div>
-                    <div onClick={clickHandler} className="box" id="4"></div>
-                    <div onClick={clickHandler} className="box" id="5"></div>
-                    <div onClick={clickHandler} className="box" id="6"></div>
-                    <div onClick={clickHandler} className="box" id="7"></div>
-                    <div onClick={clickHandler} className="box" id="8"></div>
-                    <div onClick={clickHandler} className="box" id="9"></div>
-                    <div onClick={clickHandler} className="box" id="10"></div>
-                    <div onClick={clickHandler} className="box" id="11"></div>
-                    <div onClick={clickHandler} className="box" id="12"></div>
-                    <div onClick={clickHandler} className="box" id="13"></div>
-                    <div onClick={clickHandler} className="box" id="14"></div>
-                    <div onClick={clickHandler} className="box" id="15"></div>
-                    <div onClick={clickHandler} className="box" id="16"></div>
-                    <div onClick={clickHandler} className="box" id="17"></div>
-                    <div onClick={clickHandler} className="box" id="18"></div>
-                    <div onClick={clickHandler} className="box" id="19"></div>
-                    <div onClick={clickHandler} className="box" id="20"></div>
-                    <div onClick={clickHandler} className="box" id="21"></div>
-                    <div onClick={clickHandler} className="box" id="22"></div>
-                    <div onClick={clickHandler} className="box" id="23"></div>
-                    <div onClick={clickHandler} className="box" id="24"></div>
-                    <div onClick={clickHandler} className="box" id="25"></div>
+                    {
+                        [...Array(25)].map((x, i) => <div onClick={clickHandler} className="box" id={(i+1).toString()} /> )
+                    }
                 </div>
                 {
                     isGameStarted? null : <SinglePlayerStart onStart={onStart} />
