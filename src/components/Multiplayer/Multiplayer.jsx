@@ -15,31 +15,9 @@ const Multiplayer = () => {
                     </div>
                 </div>
                 <div className="GridContainer">
-                    <div onClick={clickHandler} className="box" id="1"></div>
-                    <div onClick={clickHandler} className="box" id="2"></div>
-                    <div onClick={clickHandler} className="box" id="3"></div>
-                    <div onClick={clickHandler} className="box" id="4"></div>
-                    <div onClick={clickHandler} className="box" id="5"></div>
-                    <div onClick={clickHandler} className="box" id="6"></div>
-                    <div onClick={clickHandler} className="box" id="7"></div>
-                    <div onClick={clickHandler} className="box" id="8"></div>
-                    <div onClick={clickHandler} className="box" id="9"></div>
-                    <div onClick={clickHandler} className="box" id="10"></div>
-                    <div onClick={clickHandler} className="box" id="11"></div>
-                    <div onClick={clickHandler} className="box" id="12"></div>
-                    <div onClick={clickHandler} className="box" id="13"></div>
-                    <div onClick={clickHandler} className="box" id="14"></div>
-                    <div onClick={clickHandler} className="box" id="15"></div>
-                    <div onClick={clickHandler} className="box" id="16"></div>
-                    <div onClick={clickHandler} className="box" id="17"></div>
-                    <div onClick={clickHandler} className="box" id="18"></div>
-                    <div onClick={clickHandler} className="box" id="19"></div>
-                    <div onClick={clickHandler} className="box" id="20"></div>
-                    <div onClick={clickHandler} className="box" id="21"></div>
-                    <div onClick={clickHandler} className="box" id="22"></div>
-                    <div onClick={clickHandler} className="box" id="23"></div>
-                    <div onClick={clickHandler} className="box" id="24"></div>
-                    <div onClick={clickHandler} className="box" id="25"></div>
+                    {
+                        [...Array(25)].map((x, i) => <div onClick={clickHandler} className="box" id={(i+1).toString()} /> )
+                    }
                 </div>
                 {/* {
                     isGameOver? <GameEnd /> : null
