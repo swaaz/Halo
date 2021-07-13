@@ -162,11 +162,7 @@ const Multiplayer = (props) => {
 
   // End Game condition where 3 of 4 players lose
   const handleGameOver = (state) => {
-    if (state.gameTurn === playerId) {
-      console.log("You WIN!");
-    } else {
-      console.log(state.playerList[state.gameTurn] + " WON! YOU LOST!");
-    }
+    console.log("Game Over! " + state.playerList[state.gameTurn] + " WON!");
   };
 
   // Just a function to alert if it is the client's turn
