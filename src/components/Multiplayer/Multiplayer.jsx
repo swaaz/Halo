@@ -3,12 +3,16 @@ import { useState } from "react";
 import "./Multiplayer.css";
 import openSocket from "socket.io-client";
 import GameEndMulti from "../GameEndMulti/GameEndMulti";
+import useSound from 'use-sound';
+import clickSound from '../../assets/audio/click.mp3';
 
 const socket = openSocket("http://127.0.0.1:5000", {
   withCredentials: true,
 });
 
 const Multiplayer = (props) => {
+    const [clickPlay] = useSound(clickSound);
+
   const [playerData, setPlayerData] = useState({
     name: "",
     roomId: "",
@@ -68,10 +72,12 @@ const Multiplayer = (props) => {
 
   // to handle when someone clicks on the grid
   const clickHandler = (e) => {
+    
     if (!state.loserList.includes(playerId)) {
       console.log(e.target.id);
       const value = e.target.id;
       if (state.gameTurn === playerId) {
+        clickPlay();
         if (state.gameRound > state.newPatternList.length) {
           let newPatList = state.newPatternList;
           newPatList.push(value);
@@ -187,8 +193,19 @@ const Multiplayer = (props) => {
   };
 
   const itemActive = () => {
-    document.getElementById("lobby-item"+state.gameTurn.toString()).style.background = "white";
-    document.getElementById("lobby-item"+state.gameTurn.toString()).style.color = "black";
+    for(let i = 0; i< 4; i++) {
+      let item = document.getElementById("lobby-item"+i)
+      if(item) {
+        item.style.background = "transparent";
+        item.style.color = "white";
+      }
+    }
+
+    let item = document.getElementById("lobby-item"+state.gameTurn.toString())
+    if(item) {
+      item.style.background = "white";
+      item.style.color = "black";
+    }
   }
 
   const replay = () => {
@@ -224,6 +241,7 @@ const Multiplayer = (props) => {
   socket.on("stop", handleStop);
   socket.on("cleanGrid", delayClearFunction);
   socket.on("gameOver", handleGameOver);
+  socket.on("lobbyActive", itemActive)
 
   return (
     <div>
@@ -235,23 +253,45 @@ const Multiplayer = (props) => {
           <h4 className="header">
             Player Turn: {state.gameTurn >= 0 ? state.gameTurn : ""}
           </h4>
-          
-          <div className="score">Game code: {gameCode} </div>
+          {/* <button className="header" id="newGameButton" onClick={newGame}>
+            new game
+          </button> */}
+          {/* <input
+            className="score"
+            id="playerName"
+            type="text"
+            value={playerName}
+            onChange={handleNameChange}
+          />
+          <input
+            className="score"
+            id="gameCodeInput"
+            type="text"
+            value={gameCode}
+            onChange={handleChange}
+          /> */}
+          {/* <button className="score" id="joinGameButton" onClick={handleSubmit}>
+            join game
+          </button> */}
+          <div>Game code: {gameCode} </div>
         </div>
+        
+            {/* <div className="gameContainer"> */}
+                {/* <div className="gameInfo">
 
-        <div className="gameContainer">
-    
-          <div className="GridContainer">
-            {[...Array(25)].map((x, i) => (
-              <div
-                key={i}
-                onClick={clickHandler}
-                className="box"
-                id={(i + 1).toString()}
-              />
-            ))}
-          </div>
-        </div>
+                    <h1 className="header headerhalo">Halo </h1>
+                    <h4 className="header">Playing vs Bot </h4>
+                    <div className="score">Score</div>
+                    <div className="score">Player Turn : swaaz
+                    </div>
+                </div> */}
+                <div className="GridContainer">
+                    {
+                        [...Array(25)].map((x, i) => <div key={i} onClick={clickHandler} className="box" id={(i+1).toString()} /> )
+                    }
+                </div>
+            {/* </div> */}
+                
 
         <div>
           <h3>In-Lobby:</h3>
@@ -264,63 +304,50 @@ const Multiplayer = (props) => {
           </div>
         </div>
       </div>
-      {isClicked && (
-        <div className="multiroom">
-          <div id="title">
-            <h1 className="header">Halo </h1>
-          </div>
-          <div className="multi-items">
-            <div className="multi-item">
-              <input
-                value={playerData.name}
-                onChange={(e) =>
-                  setPlayerData((prev) => ({ ...prev, name: e.target.value }))
-                }
-                type="text"
-                placeholder="Enter Name"
-              ></input>
-            </div>
-            <div className="create multi-item" onClick={onClickHandler}>
-              <p id="create">create room</p>
-            </div>
-            <div className="join multi-item" onClick={onClickHandler}>
-              <p id="join">join room</p>
-            </div>
-          </div>
-        </div>
-      )}
-      {isJoin ? (
-        <div className="multi-items multi-card">
-          <div className="multi-item">
-            <input
-              value={playerData.roomId}
-              onChange={(e) =>
-                setPlayerData((prev) => ({ ...prev, roomId: e.target.value }))
-              }
-              className="inputRoom"
-              type="text"
-              placeholder="Enter Room ID"
-            ></input>
-          </div>
-          <div onClick={handleSubmit} className="multi-item">
-            JOIN!
-          </div>
-        </div>
-      ) : null}
-      {isCreate ? (
-        <div className="multi-items multi-card">
-          <div className="multi-item">{gameCode}</div>
-          <div onClick={() => setIsCreate(false)} className="multi-item">
-            JOIN!
-          </div>
-        </div>
-      ) : null}
+
       {
-        isEnded?
-        <GameEndMulti replay={replay} ranks={ranks} />
-        :
-        null
-      }
+                isClicked && 
+                <div className="multiPlayerStart">
+                
+                        <p></p>
+                        <div className="multi-item"><input value={playerData.name} onChange={(e) => setPlayerData(prev => ({...prev, name : e.target.value }))} type="text" placeholder="Enter Name"></input></div>
+                        <div className="create multi-item" onClick={onClickHandler} ><p id="create" >create room</p></div>
+                        <div className="join multi-item" onClick={onClickHandler}><p id="join">join room</p></div>
+                        <p></p>
+                
+                </div>
+
+            }
+            {
+                isJoin?
+                <div className="multiPlayerStart">
+                    <p></p>
+                    <div className="multi-item"><input value={playerData.roomId} onChange={(e) => setPlayerData(prev => ({...prev, roomId : e.target.value }))} className="inputRoom" type="text" placeholder="Enter Room ID"></input></div>
+                    <div onClick={handleSubmit} className="multi-item">JOIN!</div>
+                    <p></p>
+                </div>
+                :
+                null
+            }
+            {
+                isCreate?
+                <div className="multiPlayerStart">
+                  <p></p>
+                    <div className="multi-item">{gameCode}</div>
+                    <div onClick={() => setIsCreate(false)} className="multi-item">JOIN!</div>
+                  <p></p>
+                </div>
+                :
+                null
+            }
+            {
+                isEnded?
+                <GameEndMulti ranks={ranks} replay={replay} />
+                :
+                null
+            }
+
+
     </div>
   );
 };
