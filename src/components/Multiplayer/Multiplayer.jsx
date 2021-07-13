@@ -187,8 +187,8 @@ const Multiplayer = (props) => {
   };
 
   const itemActive = () => {
-    document.getElementById("lobby-item"+state.playerTurn.toString()).style.background = "white";
-    document.getElementById("lobby-item"+state.playerTurn.toString()).style.color = "black";
+    document.getElementById("lobby-item"+state.gameTurn.toString()).style.background = "white";
+    document.getElementById("lobby-item"+state.gameTurn.toString()).style.color = "black";
   }
 
   const replay = () => {
