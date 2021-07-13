@@ -7,13 +7,14 @@ const socket = openSocket("http://127.0.0.1:5000", {
   withCredentials: true,
 });
 
-export const newGame = (playerName) => {
-    console.log("new game started");
-    socket.emit("newGame", { playerName });
-  };
 
 const Multiplayer = (props) => {
-  // const [playerName, setPlayerName] = useState("");
+
+  console.log(props.location.state.name)
+
+  const playerName = props.location.state.playerData
+
+  // const [playerName, setPlayerName] = useState(props.location.state.playerData);
 
   const [state, setState] = useState({
     roomId: "",
@@ -48,6 +49,8 @@ const Multiplayer = (props) => {
     }
   };
 
+  
+
   const clickHandler = (e) => {
     if (!state.loserList.includes(playerId)) {
       console.log(e.target.id);
@@ -74,6 +77,12 @@ const Multiplayer = (props) => {
         console.log("Not your turn!");
       }
     }
+  };
+
+  
+const newGame = (playerName) => {
+    console.log("new game started");
+    socket.emit("newGame", { playerName });
   };
 
   const handleChange = (e) => {
@@ -117,7 +126,7 @@ const Multiplayer = (props) => {
     console.log(state);
   };
 
-  const handleSubmit = (playerName) => {
+  const handleSubmit = () => {
     socket.emit("joinGame", { playerName: playerName, roomName: gameCode });
   };
 
@@ -185,7 +194,7 @@ const Multiplayer = (props) => {
                 </div> */}
                 <div className="GridContainer">
                     {
-                        [...Array(25)].map((x, i) => <div onClick={clickHandler} className="box" id={(i+1).toString()} /> )
+                        [...Array(25)].map((x, i) => <div key={i} onClick={clickHandler} className="box" id={(i+1).toString()} /> )
                     }
                 </div>
             </div>
