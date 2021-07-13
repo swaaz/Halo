@@ -21,6 +21,11 @@ const gameLoop = (state) => {
 		return;
 	}
 
+	if(state.loserList.length === (state.playerList.length - 1))
+	{
+		return [true, state]
+	}
+
 	if (checkArrayEqual(state.patternList, state.newPatternList.slice(0, -1))) {
 		state.patternList = state.newPatternList
 		state.newPatternList = []

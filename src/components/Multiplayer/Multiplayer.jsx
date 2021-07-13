@@ -10,11 +10,30 @@ const socket = openSocket("http://127.0.0.1:5000", {
 
 const Multiplayer = (props) => {
 
-  console.log(props.location.state.name)
 
-  const playerName = props.location.state.playerData
 
   // const [playerName, setPlayerName] = useState(props.location.state.playerData);
+  const [playerData, setPlayerData] = useState({
+      name : '',
+      roomId : '',
+  });
+  const [isJoin, setIsJoin] = useState(false);
+  const [isCreate, setIsCreate] = useState(false);
+  const [isClicked, setIsClicked] = useState(true);
+
+  const onClickHandler = (e) => {
+    if(playerData.name.length){
+        setIsClicked(false);
+        if(e.target.id === "join") setIsJoin(true);
+        else {
+          setIsCreate(true);
+          newGame();
+        }
+    }
+    else{
+        alert("Please enter your name!");
+    }
+}
 
   const [state, setState] = useState({
     roomId: "",
@@ -80,15 +99,15 @@ const Multiplayer = (props) => {
   };
 
   
-const newGame = (playerName) => {
+const newGame = () => {
     console.log("new game started");
-    socket.emit("newGame", { playerName });
+    socket.emit("newGame", { playerName: playerData.name });
   };
 
-  const handleChange = (e) => {
-    console.log(e.target.value);
-    setGameCode(e.target.value);
-  };
+  // const handleChange = (e) => {
+  //   console.log(e.target.value);
+  //   setGameCode(e.target.value);
+  // };
 
   // const handleNameChange = (e) => {
   //   setPlayerName(e.target.value);
@@ -127,7 +146,14 @@ const newGame = (playerName) => {
   };
 
   const handleSubmit = () => {
-    socket.emit("joinGame", { playerName: playerName, roomName: gameCode });
+    if(playerData.roomId.length){
+      setIsJoin(false);
+    
+      socket.emit("joinGame", { playerName: playerData.name, roomName: playerData.roomId });
+    }
+    else{
+      alert('enter room id');
+    }
   };
 
   const handleStop = (state) => {
@@ -141,7 +167,7 @@ const newGame = (playerName) => {
       return "";
     }
   };
-
+  console.log(gameCode)
   socket.on("delayClick", delayClickFunction);
   socket.on("init", handleInit);
   socket.on("unknownCode", handleUnknownCode);
@@ -161,9 +187,9 @@ const newGame = (playerName) => {
           <h4 className="header">
             Player Turn: {state.gameTurn >= 0 ? state.gameTurn : ""}
           </h4>
-          <button className="header" id="newGameButton" onClick={newGame}>
+          {/* <button className="header" id="newGameButton" onClick={newGame}>
             new game
-          </button>
+          </button> */}
           {/* <input
             className="score"
             id="playerName"
@@ -178,9 +204,9 @@ const newGame = (playerName) => {
             value={gameCode}
             onChange={handleChange}
           /> */}
-          <button className="score" id="joinGameButton" onClick={handleSubmit}>
+          {/* <button className="score" id="joinGameButton" onClick={handleSubmit}>
             join game
-          </button>
+          </button> */}
           <div className="score">Game code: {gameCode} </div>
         </div>
         
@@ -211,6 +237,38 @@ const newGame = (playerName) => {
         </div>
 
       </div>
+      {
+                isClicked && 
+                <div className="multiroom">
+                    <div id="title">
+                        <h1 className="header">Halo </h1>
+                    </div>
+                    <div className="multi-items">
+                        <div className="multi-item"><input value={playerData.name} onChange={(e) => setPlayerData(prev => ({...prev, name : e.target.value }))} type="text" placeholder="Enter Name"></input></div>
+                        <div className="create multi-item" onClick={onClickHandler} ><p id="create" >create room</p></div>
+                        <div className="join multi-item" onClick={onClickHandler}><p id="join">join room</p></div>
+                    </div>
+                </div>
+
+            }
+            {
+                isJoin?
+                <div className="multi-items multi-card">
+                    <div className="multi-item"><input value={playerData.roomId} onChange={(e) => setPlayerData(prev => ({...prev, roomId : e.target.value }))} className="inputRoom" type="text" placeholder="Enter Room ID"></input></div>
+                    <div onClick={handleSubmit} className="multi-item">JOIN!</div>
+                </div>
+                :
+                null
+            }
+            {
+                isCreate?
+                <div className="multi-items multi-card">
+                    <div className="multi-item">sdgfdughn</div>
+                    <div onClick={() => setIsCreate(false)} className="multi-item">JOIN!</div>
+                </div>
+                :
+                null
+            }
     </div>
   );
 };
