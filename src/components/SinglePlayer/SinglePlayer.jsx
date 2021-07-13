@@ -119,7 +119,7 @@ const SinglePlayer = () => {
                 </div>
                 <div className="GridContainer">
                     {
-                        [...Array(25)].map((x, i) => <div onClick={clickHandler} className="box" id={(i+1).toString()} /> )
+                        [...Array(25)].map((x, i) => <div key={i} onClick={clickHandler} className="box" id={(i+1).toString()} /> )
                     }
                 </div>
                 {
