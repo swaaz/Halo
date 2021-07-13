@@ -8,9 +8,19 @@ const socket = openSocket("http://127.0.0.1:5000", {
 });
 
 const Multiplayer = () => {
-  const [state, setState] = useState({});
+  const [playerName, setPlayerName] = useState("");
+
+  const [state, setState] = useState({
+    roomId: "",
+    gameRound: 1,
+    patternList: [],
+    newPatternList: [],
+    playerList: [],
+    gameTurn: 0,
+    loserList: [],
+  });
   const [playerId, setPlayerId] = useState(0);
-  const [gameCode, setGameCode] = useState(0);
+  const [gameCode, setGameCode] = useState("");
 
   //function to click on box after some time
   const delayClickFunction = (element) => {
@@ -32,28 +42,32 @@ const Multiplayer = () => {
       document.getElementById(i.toString()).style.backgroundColor = "white";
     }
   };
-  const clickHandler = (e) => {
-    console.log(e.target.id);
-    const value = e.target.id;
-    if (state.gameTurn === playerId) {
-      if (state.gameRound > state.newPatternList.length) {
-        state.newPatternList.push(value);
-        document.getElementById(value).style.backgroundColor = "lightgreen";
-        // clickCount += 1;
-        console.log(state.newPatternList);
-        socket.emit("click", state);
-      }
-      if (state.gameRound === state.newPatternList.length) {
-        socket.emit("turnComplete", state);
 
-        console.log("Next person's turn (" + (state.gameTurn + 1) + ")");
-        // clickCount = 0;
-        delayClearFunction();
-        socket.emit("cleanGrid", state.roomId);
+  const clickHandler = (e) => {
+    if (!state.loserList.includes(playerId)) {
+      console.log(e.target.id);
+      const value = e.target.id;
+      if (state.gameTurn === playerId) {
+        if (state.gameRound > state.newPatternList.length) {
+          let newPatList = state.newPatternList;
+          newPatList.push(value);
+          setState({ ...state, newPatternList: newPatList });
+          // state.newPatternList.push(value);
+          document.getElementById(value).style.backgroundColor = "lightgreen";
+          // clickCount += 1;
+          console.log(state.newPatternList);
+          socket.emit("click", state);
+        }
+        if (state.gameRound === state.newPatternList.length) {
+          socket.emit("turnComplete", state);
+          // clickCount = 0;
+          delayClearFunction();
+          socket.emit("cleanGrid", state.roomId);
+        }
+      } else {
+        alert("Not your turn!");
+        console.log("Not your turn!");
       }
-    } else {
-      alert("Not your turn!");
-      console.log("Not your turn!");
     }
   };
 
@@ -62,9 +76,13 @@ const Multiplayer = () => {
     setGameCode(e.target.value);
   };
 
+  const handleNameChange = (e) => {
+    setPlayerName(e.target.value);
+  };
+
   const newGame = () => {
     console.log("new game started");
-    socket.emit("newGame");
+    socket.emit("newGame", { playerName });
   };
 
   //   const joinGame = () => {
@@ -93,15 +111,24 @@ const Multiplayer = () => {
 
   const handleUpdateState = (newState) => {
     setState(newState);
+    console.clear();
     console.log(state);
   };
 
   const handleSubmit = () => {
-    socket.emit("joinGame", gameCode);
+    socket.emit("joinGame", { playerName: playerName, roomName: gameCode });
   };
 
   const handleStop = (state) => {
     console.log("Player " + state.gameTurn + " made a wrong move!");
+  };
+
+  const checkTurn = () => {
+    if (state.gameTurn === playerId) {
+      return "Your Turn!";
+    } else {
+      return "";
+    }
   };
 
   socket.on("delayClick", delayClickFunction);
@@ -119,10 +146,22 @@ const Multiplayer = () => {
         <div className="gameInfo">
           <h1 className="header">Halo </h1>
           <h4 className="header">Player Number: {playerId} </h4>
-          <button className="score" id="newGameButton" onClick={newGame}>
+          <h4 className="header">{checkTurn()}</h4>
+          <h4 className="header">
+            Player Turn: {state.gameTurn >= 0 ? state.gameTurn : ""}
+          </h4>
+          <button className="header" id="newGameButton" onClick={newGame}>
             new game
           </button>
           <input
+            className="score"
+            id="playerName"
+            type="text"
+            value={playerName}
+            onChange={handleNameChange}
+          />
+          <input
+            className="score"
             id="gameCodeInput"
             type="text"
             value={gameCode}
@@ -132,7 +171,6 @@ const Multiplayer = () => {
             join game
           </button>
           <div className="score">Game code: {gameCode} </div>
-          <div className="score">Player Turn : swaaz</div>
         </div>
         <div className="GridContainer">
           <div onClick={clickHandler} className="box" id="1"></div>
@@ -160,6 +198,16 @@ const Multiplayer = () => {
           <div onClick={clickHandler} className="box" id="23"></div>
           <div onClick={clickHandler} className="box" id="24"></div>
           <div onClick={clickHandler} className="box" id="25"></div>
+        </div>
+        <div>
+          <h3>In-Lobby:</h3>
+          <div className="items">
+            {state
+              ? state.playerList.map((playerName) => {
+                  return <div className="item">{playerName}</div>;
+                })
+              : ""}
+          </div>
         </div>
         {/* {
                     isGameOver? <GameEnd /> : null
