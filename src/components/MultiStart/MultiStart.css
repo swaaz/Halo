@@ -1,3 +1,7 @@
+.multiPlayerStart{
+    width: 100%;
+    height: 100%;
+}
 .multiroom{
     height: 400px;
     position: absolute;
@@ -56,17 +60,23 @@ input{
 p{
     margin: 0;
 }
-
+/* .multi-item{
+    width: 30%;
+} */
 .multi-item:active, .multi-item:hover, ::placeholder:active{
     background-color: white;
     color: rgb(2, 2, 22);
 }
 
 .multi-card{ 
-    width: 30%;
+    width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-around;
+    align-items: center;
   	
 }
 
+.inputRoom{
+    width: 30%;
+}
