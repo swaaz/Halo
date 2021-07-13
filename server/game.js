@@ -7,6 +7,7 @@ const createGameState = () => {
 		newPatternList: [],
 		playerList: [],
 		gameTurn: 0,
+		loserList: [],
 	};
 }
 
@@ -25,17 +26,25 @@ const gameLoop = (state) => {
 		state.newPatternList = []
 		state.gameRound += 1
 		state.gameTurn = (state.gameTurn + 1) % 4;
-		return [true, state];
+		while (state.loserList.includes(state.gameTurn))
+			state.gameTurn = (state.gameTurn + 1) % 4;
+		return state;
 	}
 	else {
 		console.log("Player " + state.gameTurn + " made a wrong move!")
-		return [false, state];
+		state.newPatternList = []
+		state.loserList.push(state.gameTurn);
+		state.gameTurn = (state.gameTurn + 1) % 4;
+		while (state.loserList.includes(state.gameTurn))
+			state.gameTurn = (state.gameTurn + 1) % 4;
+
+		return state;
 	}
 }
 
 const checkArrayEqual = (arr1, arr2) => {
 	for (let i = 0; i < arr1.length; i++) {
-		if (arr1[i] != arr2[i])
+		if (arr1[i] !== arr2[i])
 			return false
 	}
 	return true
