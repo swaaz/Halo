@@ -21,8 +21,7 @@ const gameLoop = (state) => {
 		return;
 	}
 
-	if(state.loserList.length === (state.playerList.length - 1))
-	{
+	if (state.loserList.length === 3) {
 		return [true, state]
 	}
 
@@ -33,7 +32,11 @@ const gameLoop = (state) => {
 		state.gameTurn = (state.gameTurn + 1) % 4;
 		while (state.loserList.includes(state.gameTurn))
 			state.gameTurn = (state.gameTurn + 1) % 4;
-		return state;
+
+		if (state.loserList.length === 3) {
+			return [true, state]
+		}
+		return [false, state];
 	}
 	else {
 		console.log("Player " + state.gameTurn + " made a wrong move!")
@@ -43,7 +46,11 @@ const gameLoop = (state) => {
 		while (state.loserList.includes(state.gameTurn))
 			state.gameTurn = (state.gameTurn + 1) % 4;
 
-		return state;
+		if (state.loserList.length === 3) {
+			return [true, state]
+		}
+
+		return [false, state];
 	}
 }
 
