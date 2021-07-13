@@ -7,12 +7,13 @@ const MultiStart = () => {
     const [isCreate, setIsCreate] = useState(false);
     const [isClicked, setIsClicked] = useState(true);
     const onClickHandler = (e) => {
+        console.log(e.target.id)
         setIsClicked(false);
         if(e.target.id === "join") setIsJoin(true);
         else setIsCreate(true);
     }
     return (
-        <div>
+        <div className="multiPlayerStart">
             {
                 isClicked && 
                 <div className="multiroom">
@@ -21,8 +22,8 @@ const MultiStart = () => {
                     </div>
                     <div className="multi-items">
                         <div className="multi-item"><input type="text" placeholder="Enter Name"></input></div>
-                        <div className="create multi-item" onClick={onClickHandler}><p>create room</p></div>
-                        <div className="join multi-item" onClick={onClickHandler}><p>join room</p></div>
+                        <div className="create multi-item" onClick={onClickHandler}><p id="create" >create room</p></div>
+                        <div className="join multi-item" onClick={onClickHandler}><p id="join">join room</p></div>
                     </div>
                 </div>
 
@@ -30,7 +31,7 @@ const MultiStart = () => {
             {
                 isJoin?
                 <div className="multi-items multi-card">
-                    <div className="multi-item"><input type="text" placeholder="Enter Room ID"></input></div>
+                    <div className="multi-item"><input className="inputRoom" type="text" placeholder="Enter Room ID"></input></div>
                     <Link to='/multi'> <div className="multi-item">JOIN!</div></Link>
                 </div>
                 :
