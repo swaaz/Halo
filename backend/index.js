@@ -1,6 +1,7 @@
 const  express = require('express')
 const app = express()
-const PORT = 5000
+const PORT = 5050
+var cors = require('cors')
 const mongoose = require('mongoose')
 const Score = require('./models/Score')
 
@@ -8,8 +9,13 @@ mongoose.connect('mongodb://localhost/Halo', { useNewUrlParser: true,  useUnifie
 const db = mongoose.connection
 db.on('error', (error) => console.log(error))
 db.once('open', () => console.log('Connected to database'))
-
+app.use(cors())
 app.use(express.json())
+
+var corsOptions = {
+    origin: 'http://127.0.0.1:3000',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 app.get('/', (req, res) => res.send('Hey!! This is Halo API'))
 
