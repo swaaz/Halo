@@ -216,28 +216,25 @@ const Multiplayer = (props) => {
           {/* <button className="score" id="joinGameButton" onClick={handleSubmit}>
             join game
           </button> */}
-          <div className="score">Game code: {gameCode} </div>
+          <div>Game code: {gameCode} </div>
         </div>
+        
+            {/* <div className="gameContainer"> */}
+                {/* <div className="gameInfo">
 
-        <div className="gameContainer">
-          {/* <div className="gameInfo">
                     <h1 className="header headerhalo">Halo </h1>
                     <h4 className="header">Playing vs Bot </h4>
                     <div className="score">Score</div>
                     <div className="score">Player Turn : swaaz
                     </div>
                 </div> */}
-          <div className="GridContainer">
-            {[...Array(25)].map((x, i) => (
-              <div
-                key={i}
-                onClick={clickHandler}
-                className="box"
-                id={(i + 1).toString()}
-              />
-            ))}
-          </div>
-        </div>
+                <div className="GridContainer">
+                    {
+                        [...Array(25)].map((x, i) => <div key={i} onClick={clickHandler} className="box" id={(i+1).toString()} /> )
+                    }
+                </div>
+            {/* </div> */}
+                
 
         <div>
           <h3>In-Lobby:</h3>
@@ -250,57 +247,41 @@ const Multiplayer = (props) => {
           </div>
         </div>
       </div>
-      {isClicked && (
-        <div className="multiroom">
-          <div id="title">
-            <h1 className="header">Halo </h1>
-          </div>
-          <div className="multi-items">
-            <div className="multi-item">
-              <input
-                value={playerData.name}
-                onChange={(e) =>
-                  setPlayerData((prev) => ({ ...prev, name: e.target.value }))
-                }
-                type="text"
-                placeholder="Enter Name"
-              ></input>
-            </div>
-            <div className="create multi-item" onClick={onClickHandler}>
-              <p id="create">create room</p>
-            </div>
-            <div className="join multi-item" onClick={onClickHandler}>
-              <p id="join">join room</p>
-            </div>
-          </div>
-        </div>
-      )}
-      {isJoin ? (
-        <div className="multi-items multi-card">
-          <div className="multi-item">
-            <input
-              value={playerData.roomId}
-              onChange={(e) =>
-                setPlayerData((prev) => ({ ...prev, roomId: e.target.value }))
-              }
-              className="inputRoom"
-              type="text"
-              placeholder="Enter Room ID"
-            ></input>
-          </div>
-          <div onClick={handleSubmit} className="multi-item">
-            JOIN!
-          </div>
-        </div>
-      ) : null}
-      {isCreate ? (
-        <div className="multi-items multi-card">
-          <div className="multi-item">sdgfdughn</div>
-          <div onClick={() => setIsCreate(false)} className="multi-item">
-            JOIN!
-          </div>
-        </div>
-      ) : null}
+
+      {
+                isClicked && 
+                <div className="multiPlayerStart">
+                
+                        <p></p>
+                        <div className="multi-item"><input value={playerData.name} onChange={(e) => setPlayerData(prev => ({...prev, name : e.target.value }))} type="text" placeholder="Enter Name"></input></div>
+                        <div className="create multi-item" onClick={onClickHandler} ><p id="create" >create room</p></div>
+                        <div className="join multi-item" onClick={onClickHandler}><p id="join">join room</p></div>
+                        <p></p>
+                
+                </div>
+
+            }
+            {
+                isJoin?
+                <div className="multiPlayerStart">
+                    <p></p>
+                    <div className="multi-item"><input value={playerData.roomId} onChange={(e) => setPlayerData(prev => ({...prev, roomId : e.target.value }))} className="inputRoom" type="text" placeholder="Enter Room ID"></input></div>
+                    <div onClick={handleSubmit} className="multi-item">JOIN!</div>
+                    <p></p>
+                </div>
+                :
+                null
+            }
+            {
+                isCreate?
+                <div className="multi-items multi-card">
+                    <div className="multi-item">sdgfdughn</div>
+                    <div onClick={() => setIsCreate(false)} className="multi-item">JOIN!</div>
+                </div>
+                :
+                null
+            }
+
     </div>
   );
 };

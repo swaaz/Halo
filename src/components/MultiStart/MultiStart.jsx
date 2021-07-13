@@ -51,9 +51,6 @@ const MultiStart = () => {
             {
                 isClicked && 
                 <div className="multiroom">
-                    <div id="title">
-                        <h1 className="header">Halo </h1>
-                    </div>
                     <div className="multi-items">
                         <div className="multi-item"><input value={playerData.name} onChange={(e) => setPlayerData(prev => ({...prev, name : e.target.value }))} type="text" placeholder="Enter Name"></input></div>
                         <div className="create multi-item" onClick={onCreateHandler} ><p id="create" >create room</p></div>
@@ -71,8 +68,6 @@ const MultiStart = () => {
                 :
                 null
             }
-
-
             
         </div>
     )
