@@ -1,0 +1,90 @@
+.single-start{
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #17212d;
+}
+
+
+
+.start-btn{
+    transition: background-color 0.5s ease;
+    border: 1px solid white;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+    /* margin-bottom: 10%; */
+    margin-bottom: 10%;
+}
+
+/* .btn{
+    width: 45%;
+} */
+
+.start{
+    margin-top: 10%;
+    margin-bottom: 0;
+}
+
+input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: center;
+}
+
+::placeholder{
+    color: white;
+    opacity: 1;
+}
+
+.start:active, .start:hover, ::placeholder:active{
+    background-color: white;
+    color: rgb(2, 2, 22);
+}
+
+@media only screen and (max-width: 768px) {
+    .single-start{
+        width: 250px;
+        height: 25%;
+        font-size: 90%; 
+        text-align: center;
+    }
+    .start-btn{
+        width: 70%;
+        /* margin-bottom: 15%; */
+    }
+}
+@media only screen and (max-width: 850px) and (min-width: 769px){
+    .single-start{
+        width: 250px;
+        height: 20%;
+        /* font-size: 80%;  */
+        text-align: center;
+    }
+    /* .start-btn{
+        width: 30%;
+        margin-bottom: 15%;
+    } */
+}
+@media only screen and (max-width: 1100px) and (min-width: 850px){
+    .single-start{
+        width: 250px;
+        height: 20%;
+        /* font-size: 80%;  */
+        text-align: center;
+    }
+    /* .start-btn{
+        width: 30%;
+        margin-bottom: 15%;
+    } */
+
+}
