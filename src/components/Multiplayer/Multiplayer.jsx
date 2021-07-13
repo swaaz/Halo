@@ -7,34 +7,15 @@ const socket = openSocket("http://127.0.0.1:5000", {
   withCredentials: true,
 });
 
-
 const Multiplayer = (props) => {
-
-
-
-  // const [playerName, setPlayerName] = useState(props.location.state.playerData);
   const [playerData, setPlayerData] = useState({
-      name : '',
-      roomId : '',
+    name: "",
+    roomId: "",
   });
+
   const [isJoin, setIsJoin] = useState(false);
   const [isCreate, setIsCreate] = useState(false);
   const [isClicked, setIsClicked] = useState(true);
-
-  const onClickHandler = (e) => {
-    if(playerData.name.length){
-        setIsClicked(false);
-        if(e.target.id === "join") setIsJoin(true);
-        else {
-          setIsCreate(true);
-          newGame();
-        }
-    }
-    else{
-        alert("Please enter your name!");
-    }
-}
-
   const [state, setState] = useState({
     roomId: "",
     gameRound: 1,
@@ -46,6 +27,19 @@ const Multiplayer = (props) => {
   });
   const [playerId, setPlayerId] = useState(0);
   const [gameCode, setGameCode] = useState("");
+
+  const onClickHandler = (e) => {
+    if (playerData.name.length) {
+      setIsClicked(false);
+      if (e.target.id === "join") setIsJoin(true);
+      else {
+        setIsCreate(true);
+        newGame();
+      }
+    } else {
+      alert("Please enter your name!");
+    }
+  };
 
   //function to click on box after some time
   const delayClickFunction = (element) => {
@@ -61,6 +55,7 @@ const Multiplayer = (props) => {
   const delayClearFunction = () => {
     setTimeout(clearScreen, 500);
   };
+
   //to clean immediatly
   const clearScreen = () => {
     for (let i = 1; i <= 25; ++i) {
@@ -68,8 +63,7 @@ const Multiplayer = (props) => {
     }
   };
 
-  
-
+  // to handle when someone clicks on the grid
   const clickHandler = (e) => {
     if (!state.loserList.includes(playerId)) {
       console.log(e.target.id);
@@ -98,10 +92,24 @@ const Multiplayer = (props) => {
     }
   };
 
-  
-const newGame = () => {
+  // to create new game
+  const newGame = () => {
     console.log("new game started");
     socket.emit("newGame", { playerName: playerData.name });
+  };
+
+  // To Join new Game with a roomId
+  const handleSubmit = () => {
+    if (playerData.roomId.length) {
+      setIsJoin(false);
+
+      socket.emit("joinGame", {
+        playerName: playerData.name,
+        roomName: playerData.roomId,
+      });
+    } else {
+      alert("enter room id");
+    }
   };
 
   // const handleChange = (e) => {
@@ -113,53 +121,51 @@ const newGame = () => {
   //   setPlayerName(e.target.value);
   // };
 
-  
-
   //   const joinGame = () => {
   //     const code = gameCodeInput.value;
   //     console.log("gameCodeInput: " + gameCode);
   //     socket.emit("joinGame", gameCode);
   //   };
 
+  // To assign playerId sent by the server
   const handleInit = (number) => {
     setPlayerId(number);
   };
 
+  // To assign the GameCode sent by the server
   const handleGameCode = (gameCodeValue) => {
     // gameCodeDisplay.innerText = gameCode;
     setGameCode(gameCodeValue);
     console.log(gameCodeValue);
   };
 
+  // In case of unknown gameCode
   const handleUnknownCode = () => {
     console.log("Unknown Code!");
   };
 
+  // In case the room has 4 players already
   const handleTooManyPlayers = () => {
     console.log("Too Many players!");
   };
 
+  // To update the state after every turn
   const handleUpdateState = (newState) => {
     setState(newState);
     console.clear();
     console.log(state);
   };
 
-  const handleSubmit = () => {
-    if(playerData.roomId.length){
-      setIsJoin(false);
-    
-      socket.emit("joinGame", { playerName: playerData.name, roomName: playerData.roomId });
-    }
-    else{
-      alert('enter room id');
-    }
-  };
-
   const handleStop = (state) => {
     console.log("Player " + state.gameTurn + " made a wrong move!");
   };
 
+  // End Game condition where 3 of 4 players lose
+  const handleGameOver = (state) => {
+    console.log("Game Over! " + state.playerList[state.gameTurn] + " WON!");
+  };
+
+  // Just a function to alert if it is the client's turn
   const checkTurn = () => {
     if (state.gameTurn === playerId) {
       return "Your Turn!";
@@ -167,7 +173,9 @@ const newGame = () => {
       return "";
     }
   };
-  console.log(gameCode)
+  console.log(gameCode);
+
+  // Server's Event Listeners
   socket.on("delayClick", delayClickFunction);
   socket.on("init", handleInit);
   socket.on("unknownCode", handleUnknownCode);
@@ -176,6 +184,7 @@ const newGame = () => {
   socket.on("updateState", handleUpdateState);
   socket.on("stop", handleStop);
   socket.on("cleanGrid", delayClearFunction);
+  socket.on("gameOver", handleGameOver);
 
   return (
     <div>
@@ -212,6 +221,7 @@ const newGame = () => {
         
             {/* <div className="gameContainer"> */}
                 {/* <div className="gameInfo">
+
                     <h1 className="header headerhalo">Halo </h1>
                     <h4 className="header">Playing vs Bot </h4>
                     <div className="score">Score</div>
@@ -225,6 +235,7 @@ const newGame = () => {
                 </div>
             {/* </div> */}
                 
+
         <div>
           <h3>In-Lobby:</h3>
           <div className="items">
@@ -235,8 +246,8 @@ const newGame = () => {
               : ""}
           </div>
         </div>
-
       </div>
+
       {
                 isClicked && 
                 <div className="multiPlayerStart">
@@ -270,9 +281,9 @@ const newGame = () => {
                 :
                 null
             }
+
     </div>
   );
 };
 
-export default Multiplayer
-
+export default Multiplayer;
