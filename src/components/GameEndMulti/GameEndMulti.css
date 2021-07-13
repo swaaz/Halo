@@ -47,3 +47,12 @@
         font-size: 90%;
     }
 }
+
+#cardHeight{
+    height: 30%;
+    padding: 10px 0;
+}
+#replay{
+    width: 45%;
+    cursor: pointer;
+}
