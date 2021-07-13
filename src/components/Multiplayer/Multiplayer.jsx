@@ -1,6 +1,7 @@
 import React from 'react'
 import './Multiplayer.css'
 const Multiplayer = () => {
+  
     const clickHandler = (e) => {
         console.log(e);
     }
