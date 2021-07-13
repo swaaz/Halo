@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import './MultiStart.css';
 
 const MultiStart = () => {
     const [isJoin, setIsJoin] = useState(false);
@@ -12,31 +13,34 @@ const MultiStart = () => {
     }
     return (
         <div>
-            <p>Halo</p>
             {
                 isClicked && 
-                <div>
-                    <p>start</p>
-                    <input type="text" />
-                    <div id="create" onClick={onClickHandler}>create room</div>
-                    <div id="join" onClick={onClickHandler}>join room</div>
+                <div className="multiroom">
+                    <div id="title">
+                        <h1 className="header">Halo </h1>
+                    </div>
+                    <div className="multi-items">
+                        <div className="multi-item"><input type="text" placeholder="Enter Name"></input></div>
+                        <div className="create multi-item" onClick={onClickHandler}><p>create room</p></div>
+                        <div className="join multi-item" onClick={onClickHandler}><p>join room</p></div>
+                    </div>
                 </div>
 
             }
             {
                 isJoin?
-                <div>
-                    <p>join div</p>
-                    <Link to='/multi'> <div>next</div></Link>
+                <div className="multi-items multi-card">
+                    <div className="multi-item"><input type="text" placeholder="Enter Room ID"></input></div>
+                    <Link to='/multi'> <div className="multi-item">JOIN!</div></Link>
                 </div>
                 :
                 null
             }
             {
                 isCreate?
-                <div>
-                    <p>create div</p>
-                    <Link to='/multi'> <div>next</div></Link>
+                <div className="multi-items multi-card">
+                    <div className="multi-item">Room ID</div>
+                    <Link to='/multi'> <div className="multi-item">JOIN!</div></Link>
                 </div>
                 :
                 null
