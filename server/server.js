@@ -16,16 +16,11 @@ const clientRooms = {};
 io.on('connection', client => {
 	client.on("turnComplete", (state) => {
 		console.log("Turn processing...\n", state);
-		let [win, gameState] = gameLoop(state);
+		let gameState = gameLoop(state);
 
-		console.log(win, gameState);
+		console.log(gameState);
+		io.to(gameState.roomId).emit("updateState", gameState);
 
-		if (win) {
-			io.to(gameState.roomId).emit("updateState", gameState);
-		}
-		else {
-			io.to(gameState.roomId).emit("stop", gameState);
-		}
 	})
 
 	client.on("click", (state) => {
@@ -40,12 +35,13 @@ io.on('connection', client => {
 	}
 
 
-	const handleJoinGame = (roomName) => {
+	const handleJoinGame = ({ playerName, roomName }) => {
 		// test()
+		console.log(playerName, roomName)
 
 		const room = io.sockets.adapter.rooms.get(roomName);
-		let numClients = room.size ? room.size : 1;
-		console.log(room.size + 1);
+		let numClients = room ? room.size : 0;
+		console.log(numClients);
 		// console.log(io.sockets.adapter.rooms)
 		// let allUsers;
 		// if (room) {
@@ -69,19 +65,26 @@ io.on('connection', client => {
 
 		client.join(roomName);
 		client.number = numClients;
+		let playerL = state[roomName].playerList;
+		playerL.push(playerName)
+		state[roomName].playerList = playerL;
+		console.log(state[roomName]);
 		client.emit('init', client.number);
-		client.emit("updateState", state[roomName])
+		io.to(roomName).emit("updateState", state[roomName])
 		// test()
 
 	}
 
-	const handleNewGame = () => {
+	const handleNewGame = ({ playerName }) => {
 		let roomName = makeid(5);
 		clientRooms[client.id] = roomName;
 		client.emit('gameCode', roomName);
 
 		state[roomName] = initGame();
 		state[roomName].roomId = roomName;
+		let playerL = state[roomName].playerList;
+		playerL.push(playerName)
+		state[roomName].playerList = playerL;
 
 		client.join(roomName);
 		client.number = 0;
