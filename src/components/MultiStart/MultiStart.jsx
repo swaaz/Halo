@@ -30,7 +30,7 @@ const MultiStart = () => {
             {
                 isJoin?
                 <div className="multi-items multi-card">
-                    <div className="multi-item">Enter Room ID</div>
+                    <div className="multi-item"><input type="text" placeholder="Enter Room ID"></input></div>
                     <Link to='/multi'> <div className="multi-item">JOIN!</div></Link>
                 </div>
                 :
