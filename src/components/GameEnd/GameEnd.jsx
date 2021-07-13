@@ -1,10 +1,15 @@
 import React from 'react'
 import './GameEnd.css';
+import { Link } from "react-router-dom";
 const GameEnd = (props) => {
     return (
         <div className="game-end">
-            <p>Game Ended bruh : sadly :(</p>
-            <p>your score : {props.score}</p>
+            <div className="game-end-item1">GAME OVER :(</div>
+            <div className="game-end-item2">your score : {props.score}</div>
+            <div class="game-end-options">
+                <div className="option">Replay</div>
+                <div className="option">Home</div>
+            </div>
         </div>
     )
 }
