@@ -7,8 +7,13 @@ const socket = openSocket("http://127.0.0.1:5000", {
   withCredentials: true,
 });
 
-const Multiplayer = () => {
-  const [playerName, setPlayerName] = useState("");
+export const newGame = (playerName) => {
+    console.log("new game started");
+    socket.emit("newGame", { playerName });
+  };
+
+const Multiplayer = (props) => {
+  // const [playerName, setPlayerName] = useState("");
 
   const [state, setState] = useState({
     roomId: "",
@@ -76,14 +81,11 @@ const Multiplayer = () => {
     setGameCode(e.target.value);
   };
 
-  const handleNameChange = (e) => {
-    setPlayerName(e.target.value);
-  };
+  // const handleNameChange = (e) => {
+  //   setPlayerName(e.target.value);
+  // };
 
-  const newGame = () => {
-    console.log("new game started");
-    socket.emit("newGame", { playerName });
-  };
+  
 
   //   const joinGame = () => {
   //     const code = gameCodeInput.value;
@@ -115,7 +117,7 @@ const Multiplayer = () => {
     console.log(state);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (playerName) => {
     socket.emit("joinGame", { playerName: playerName, roomName: gameCode });
   };
 
@@ -153,7 +155,7 @@ const Multiplayer = () => {
           <button className="header" id="newGameButton" onClick={newGame}>
             new game
           </button>
-          <input
+          {/* <input
             className="score"
             id="playerName"
             type="text"
@@ -166,7 +168,7 @@ const Multiplayer = () => {
             type="text"
             value={gameCode}
             onChange={handleChange}
-          />
+          /> */}
           <button className="score" id="joinGameButton" onClick={handleSubmit}>
             join game
           </button>
@@ -204,4 +206,5 @@ const Multiplayer = () => {
   );
 };
 
-export default Multiplayer;
+export default Multiplayer
+

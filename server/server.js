@@ -3,7 +3,7 @@ const { makeid } = require('./utils')
 
 const io = require('socket.io')({
 	cors: {
-		origin: "http://127.0.0.1:3000",
+		origin: "http://127.0.0.1:3000/multistart",
 		credentials: true,
 		methods: ["GET", "POST"]
 	}
