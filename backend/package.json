@@ -1,0 +1,17 @@
+{
+  "name": "halo",
+  "version": "1.0.0",
+  "description": "Backend Server for Halo game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "swaaz",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.6.10",
+    "mongoose": "^5.13.2",
+    "nodemon": "^2.0.12"
+  }
+}
