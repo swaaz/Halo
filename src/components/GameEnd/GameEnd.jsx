@@ -7,8 +7,8 @@ const GameEnd = (props) => {
             <div className="game-end-item1">GAME OVER :(</div>
             <div className="game-end-item2">your score : {props.score}</div>
             <div class="game-end-options">
-                <div className="option">Replay</div>
-                <div className="option">Home</div>
+                <a className="link" href='/single'><div className="option">Replay</div></a>
+                <Link className="linkHome" to='/'><div className="option">Home</div></Link>
             </div>
         </div>
     )

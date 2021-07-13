@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import GameEnd from '../GameEnd/GameEnd';
 import './SinglePlayer.css';
 import Sound from 'react-sound';
-import bgMusic from '../../audio/bg.mp3';
+import bgMusic from '../../assets/audio/bg.mp3';
 import useSound from 'use-sound';
 import SinglePlayerStart from '../SinglePlayerStart/SinglePlayerStart'
+import clickSound from '../../assets/audio/click.mp3';
 const SinglePlayer = () => {
+    const [clickPlay] = useSound(clickSound);
 
     const [path, setPath] = useState([]);
     const [currPath, setCurrPath] = useState([]);
@@ -14,7 +16,9 @@ const SinglePlayer = () => {
     const [isGameOver, setIsGameOver] = useState(false);
     const [counter, setCounter] = useState(0);
     const [tempCounter, setTempCounter] = useState(counter);
+    const [isMusicPlaying, setIsMusicPlaying] = useState(true);
 
+    // 
     const delayClickFunction = (element) => {
         setTimeout(botClick(element), 50000);
     }
@@ -49,7 +53,8 @@ const SinglePlayer = () => {
     const clickHandler = (e) => {
         if(isPlaying && !isGameOver && isGameStarted){
             document.getElementById(e.target.id).style.backgroundColor = 'green';
-
+            clickPlay();
+            
             if(tempCounter > 1){
                 if(path[currPath.length] !== parseInt(e.target.id) && tempCounter !== 1) {
                     document.getElementById(e.target.id).style.backgroundColor = '#f00';
@@ -83,8 +88,17 @@ const SinglePlayer = () => {
     // console.log(tempCounter);
     return (
         <div>
-            <Sound url={bgMusic} playStatus={Sound.status.PLAYING} loop={true} />
+            <Sound url={bgMusic} playStatus={isMusicPlaying? Sound.status.PLAYING : Sound.status.STOPPED} loop={true} />
             <div className="gameContainer">
+                <div className="speaker">
+                    {
+                        isMusicPlaying?
+                        <img className="speakerIcon" src={require("../../assets/icons/unmute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(false)} />
+                        :
+                        <img className="speakerIcon" src={require("../../assets/icons/mute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(true)} />
+
+                    }
+                </div>
                 <div className="gameInfo">
                     <h1 className="header headerhalo">Halo </h1>
                     <h4 className="header">Playing vs Bot </h4>
