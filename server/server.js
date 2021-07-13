@@ -3,9 +3,10 @@ const { makeid } = require('./utils')
 
 const io = require('socket.io')({
 	cors: {
-		origin: "http://127.0.0.1:3000/",
+		origin: "http://127.0.0.1:3000",
 		credentials: true,
-		methods: ["GET", "POST"]
+		// methods: ["GET", "POST"]
+		methods: ["*"]
 	}
 });
 
@@ -16,10 +17,16 @@ const clientRooms = {};
 io.on('connection', client => {
 	client.on("turnComplete", (state) => {
 		console.log("Turn processing...\n", state);
-		let gameState = gameLoop(state);
+		let [gameOver, gameState] = gameLoop(state);
 
 		console.log(gameState);
-		io.to(gameState.roomId).emit("updateState", gameState);
+		if(gameOver) {
+			// client.emit
+			io.to(gameState.roomId).emit("gameOver", gameState);
+		}
+		else {
+			io.to(gameState.roomId).emit("updateState", gameState);
+		}
 
 	})
 
