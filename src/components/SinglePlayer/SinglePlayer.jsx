@@ -41,7 +41,13 @@ const SinglePlayer = () => {
     }
     // function to click on the box
     const botClick = (item) => {
-       document.getElementById(item.toString()).style.backgroundColor = 'green';
+       const col = document.getElementById(item.toString()).style.backgroundColor;
+            const colorArray = col.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/i)
+            console.log(colorArray)
+            if(colorArray === null) document.getElementById(item.toString()).style.backgroundColor = 'rgb(0,255,0,0.9 )';
+            else{
+                document.getElementById(item.toString()).style.backgroundColor = `rgb(${parseInt(colorArray[1]) + 100}, 255, ${parseInt(colorArray[3]) + 100} )`;
+            }
     }
     // function perform bot's turn
     const botTurn = (lastElement) => {
@@ -61,7 +67,16 @@ const SinglePlayer = () => {
     //function to capture the click of the user
     const clickHandler = (e) => {
         if(isPlaying && !isGameOver && isGameStarted){
-            document.getElementById(e.target.id).style.backgroundColor = 'green';
+            // const backgroundStyle = window.getComputedStyle(e.target, null).getPropertyValue("background-color");
+            const col = document.getElementById(e.target.id).style.backgroundColor;
+            const colorArray = col.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/i)
+            console.log(colorArray)
+            if(colorArray === null) document.getElementById(e.target.id).style.backgroundColor = 'rgb(0, 255, 0)';
+            else{
+                document.getElementById(e.target.id).style.backgroundColor = `rgb(${parseInt(colorArray[1]) + 100}, 255, ${parseInt(colorArray[3]) + 100} )`;
+            }
+
+
             clickPlay();
             
             if(tempCounter > 1){
