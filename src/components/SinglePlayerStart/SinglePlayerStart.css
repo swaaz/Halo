@@ -8,9 +8,6 @@
     justify-content: space-evenly;
     background-color: #17212d;
 }
-
-
-
 .singlestart-btn{
     transition: background-color 0.5s ease;
     border: 1px solid white;
@@ -27,16 +24,7 @@
     text-align: center;
     cursor: pointer;
     /* margin-bottom: 10%; */
-    /* margin-bottom: 10%; */
 }
-/* .btn{
-    width: 45%;
-} */
-
-/* .start{
-    margin-top: 10%;
-    margin-bottom: 0;
-} */
 
 input{
     width: 100%;
@@ -48,11 +36,6 @@ input{
     font-size: inherit;
     text-align: center;
 }
-
-/* ::placeholder{
-    color: white;
-    opacity: 1;
-} */
 
 .singlestart-btn:active, .singlestart-btn:hover, ::placeholder:active{
     background-color: white;

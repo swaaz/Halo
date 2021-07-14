@@ -9,7 +9,7 @@ import {
   Route,
 } from "react-router-dom";
 import Multiplayer from './components/Multiplayer/Multiplayer';
-import MultiStart from './components/MultiStart/MultiStart';
+// import MultiStart from './components/MultiStart/MultiStart';
 import LeaderBoard from './components/LeaderBoard/LeaderBoard';
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
       <div id="stars3"></div>
         <Switch>
           <Route exact path='/leaderboard' component={LeaderBoard} />
-          <Route exact path='/multistart' component={MultiStart} />
+          {/* <Route exact path='/multistart' component={MultiStart} /> */}
           <Route exact path='/multi' component={Multiplayer} />
           <Route exact path='/single' component={SinglePlayer} />
           <Route path='/leader' component={LeaderBoard} />
