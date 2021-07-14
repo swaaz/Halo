@@ -245,8 +245,8 @@ const Multiplayer = (props) => {
 
   return (
     <div>
-      <div className="gameContainer">
-        <div className="gameInfo">
+      <div className="multi-gameContainer">
+        <div className="multi-gameInfo">
           <h1 className="header">Halo </h1>
           <h4 className="header">Player Number: {playerId} </h4>
           <h4 className="header">{checkTurn()}</h4>
@@ -285,9 +285,9 @@ const Multiplayer = (props) => {
                     <div className="score">Player Turn : swaaz
                     </div>
                 </div> */}
-                <div className="GridContainer">
+                <div className="multi-gridContainer">
                     {
-                        [...Array(25)].map((x, i) => <div key={i} onClick={clickHandler} className="box" id={(i+1).toString()} /> )
+                        [...Array(25)].map((x, i) => <div key={i} onClick={clickHandler} className="multi-box" id={(i+1).toString()} /> )
                     }
                 </div>
             {/* </div> */}
@@ -307,35 +307,33 @@ const Multiplayer = (props) => {
 
       {
                 isClicked && 
-                <div className="multiPlayerStart">
-                
-                        <p></p>
-                        <div className="multi-item"><input value={playerData.name} onChange={(e) => setPlayerData(prev => ({...prev, name : e.target.value }))} type="text" placeholder="Enter Name"></input></div>
-                        <div className="create multi-item" onClick={onClickHandler} ><p id="create" >create room</p></div>
-                        <div className="join multi-item" onClick={onClickHandler}><p id="join">join room</p></div>
-                        <p></p>
-                
+                <div className="multistart-container">
+                <div className="multi-start">
+                        <div className="multistart-inputdiv"><input value={playerData.name} onChange={(e) => setPlayerData(prev => ({...prev, name : e.target.value }))} type="text" placeholder="Enter Name"></input></div>
+                        <div className="multistart-btn" onClick={onClickHandler} ><p id="create" >create room</p></div>
+                        <div className="multistart-btn" onClick={onClickHandler}><p id="join">join room</p></div>
+                </div>
                 </div>
 
             }
             {
                 isJoin?
-                <div className="multiPlayerStart">
-                    <p></p>
-                    <div className="multi-item"><input value={playerData.roomId} onChange={(e) => setPlayerData(prev => ({...prev, roomId : e.target.value }))} className="inputRoom" type="text" placeholder="Enter Room ID"></input></div>
-                    <div onClick={handleSubmit} className="multi-item">JOIN!</div>
-                    <p></p>
+                <div className="multistart-container">
+                    <div className="multi-joinstart">
+                    <div className="multistart-inputdiv"><input value={playerData.roomId} onChange={(e) => setPlayerData(prev => ({...prev, roomId : e.target.value }))} className="inputRoom" type="text" placeholder="Enter Game Code"></input></div>
+                    <div onClick={handleSubmit} className="multistart-btn">JOIN!</div>
+                   </div> 
                 </div>
                 :
                 null
             }
             {
                 isCreate?
-                <div className="multiPlayerStart">
-                  <p></p>
-                    <div className="multi-item">{gameCode}</div>
-                    <div onClick={() => setIsCreate(false)} className="multi-item">JOIN!</div>
-                  <p></p>
+                <div className="multistart-container">
+                   <div className="multi-createstart">
+                    <div className="multistart-item">{gameCode}</div>
+                    <div onClick={() => setIsCreate(false)} className="multistart-createbtn multistart-item">JOIN!</div>
+                  </div>
                 </div>
                 :
                 null
