@@ -17,13 +17,16 @@ const clientRooms = {};
 io.on('connection', client => {
 	client.on("turnComplete", (state) => {
 		console.log("Turn processing...\n", state);
-		let [gameOver, gameState] = gameLoop(state);
+		let [gameOver, playerLost, gameState] = gameLoop(state);
 
 		console.log(gameState);
 		if(gameOver) {
 			io.to(gameState.roomId).emit("gameOver", gameState);
 		}
 		else {
+			if(playerLost) {
+				client.emit("playerLost");
+			}
 
 			io.to(gameState.roomId).emit("updateState", gameState);
 		}
