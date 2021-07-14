@@ -9,12 +9,6 @@
     background-color: #141c27;
 }
 
-/* .game-end-item1, .game-end-item2{
-    margin-bottom: 5%;
-} */
-
-
-
 .gameend-options{
     display: flex;
     align-items: center;
@@ -52,10 +46,6 @@
 .gameend-option2{
     width: 100%;
 }
-
-/* .gameend-over{
-    margin-bottom: -7%;
-} */
 
 @media only screen and (max-width: 1100px) and (min-width: 850px){
     .gameend-container{

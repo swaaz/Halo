@@ -28,8 +28,6 @@
   justify-items: center;
   column-gap: 10px;
   row-gap: 10px;
-  /* width: 70vw;
-  height: 70vh; */
 }
 .multi-box{
   position: relative;
@@ -63,10 +61,8 @@
   transition: background-color 0.5s ease;
   border: 1px solid white;
   width: 70%;
-  /* height: 10%; */
   text-align: center;
   cursor: pointer;
-  /* margin-bottom: 10%; */
   /* margin-bottom: 10%; */
 }
 .multistart-container{
@@ -155,12 +151,6 @@ input{
   color: #141c27;
   opacity: 1;
 }
-
-/* input:focus::placeholder {
-  cursor: pointer;
-  color: white;
-  background-color: aliceblue;
-} */
 
 
 

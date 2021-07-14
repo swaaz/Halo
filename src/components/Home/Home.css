@@ -17,7 +17,6 @@
     align-items: center;
     text-align: center;
     vertical-align: middle;
-    /* font-family: 'Poppins', sans-serif; */
 }
 
 a{
@@ -44,13 +43,11 @@ a{
 
 .itemlast{
     display: flex;
-    /* flex-direction: row; */
     justify-content: space-between;
-    /* align-items: stretch; */
+
 }
 
 .iteml{
-    /* width: 40%; */
     transition: background-color 0.5s ease;
     border: 1px solid white;
 }
