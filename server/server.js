@@ -24,8 +24,11 @@ io.on('connection', client => {
 			io.to(gameState.roomId).emit("gameOver", gameState);
 		}
 		else {
+
 			io.to(gameState.roomId).emit("updateState", gameState);
 		}
+
+		io.to(gameState.roomId).emit("lobbyActive");
 
 	})
 
@@ -77,6 +80,8 @@ io.on('connection', client => {
 		console.log(state[roomName]);
 		client.emit('init', client.number);
 		io.to(roomName).emit("updateState", state[roomName])
+
+		io.to(roomName).emit("lobbyActive");
 		// test()
 
 	}

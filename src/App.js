@@ -20,6 +20,7 @@ function App() {
       <div id="stars2"></div>
       <div id="stars3"></div>
         <Switch>
+          <Route exact path='/leaderboard' component={LeaderBoard} />
           <Route exact path='/multistart' component={MultiStart} />
           <Route exact path='/multi' component={Multiplayer} />
           <Route exact path='/single' component={SinglePlayer} />

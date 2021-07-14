@@ -1,6 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './LeaderBoard.css'
+import axios from 'axios';
+
 const LeaderBoard = () =>{
+    const [scoreData, setScoreData] = useState([]);
+    useEffect(() => {
+        axios.get('http://127.0.0.1:5050/leaderboard')
+        .then((res)=> setScoreData(res.data))
+        .catch((err)=> console.log(err))
+    }, [])
+
     return(
         <div>
             <div className="leader-container">
@@ -11,56 +20,16 @@ const LeaderBoard = () =>{
                     <h2>Leader Board</h2>
                 </div>
                 <div className="players">
-                    <div className="info">
-                        <div className="no">1.</div>
-                        <div className="name">Swaaz</div>
-                        <div className="score">20</div>
-                    </div>
-                    <div className="info">
-                        <div className="no">2.</div>
-                        <div className="name">Suhan</div>
-                        <div className="score">20</div>
-                    </div>
-                    <div className="info">
-                        <div className="no">3.</div>
-                        <div className="name">Rachitha</div>
-                        <div className="score">100</div>
-                    </div>
-                    <div className="info">
-                        <div className="no">4.</div>
-                        <div className="name">Swaaz</div>
-                        <div className="score">0</div>
-                    </div>
-                    <div className="info">
-                        <div className="no">5.</div>
-                        <div className="name">Swaaz</div>
-                        <div className="score">0</div>
-                    </div>
-                    <div className="info">
-                        <div className="no">6.</div>
-                        <div className="name">Swaaz</div>
-                        <div className="score">0</div>
-                    </div>
-                    <div className="info">
-                        <div className="no">7.</div>
-                        <div className="name">Swaaz</div>
-                        <div className="score">0</div>
-                    </div>
-                    <div className="info">
-                        <div className="no">8.</div>
-                        <div className="name">Swaaz</div>
-                        <div className="score">0</div>
-                    </div>
-                    <div className="info">
-                        <div className="no">9.</div>
-                        <div className="name">Swaaz</div>
-                        <div className="score">0</div>
-                    </div>
-                    <div className="info">
-                        <div className="no">10.</div>
-                        <div className="name">Swaaz</div>
-                        <div className="score">0</div>
-                    </div>
+                    {
+                        scoreData.map((player, index) => (
+                            <div key={index} className="info">
+                                <div className="no">{index+1}.</div>
+                                <div className="name">{player.name}</div>
+                                <div className="score">{player.score}</div>
+                            </div>
+                        ))
+                    }
+                    
                 </div>
             </div>
         </div>
