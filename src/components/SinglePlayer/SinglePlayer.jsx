@@ -122,30 +122,30 @@ const SinglePlayer = () => {
     return (
         <div>
             <Sound url={bgMusic} playStatus={isMusicPlaying? Sound.status.PLAYING : Sound.status.STOPPED} loop={true} />
-            <div className="gameContainer">
-                <div className="speaker">
+            <div className="single-gameContainer">
+                <div className="single-speaker">
                     {
                         isMusicPlaying?
-                        <img className="speakerIcon" src={require("../../assets/icons/unmute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(false)} />
+                        <img className="single-speakerIcon" src={require("../../assets/icons/unmute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(false)} />
                         :
-                        <img className="speakerIcon" src={require("../../assets/icons/mute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(true)} />
+                        <img className="single-speakerIcon" src={require("../../assets/icons/mute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(true)} />
 
                     }
                 </div>
-                <div className="gameInfo">
-                    <h1 className="header headerhalo">Halo </h1>
+                <div className="single-gameInfo">
+                    <h1 className="single-headerhalo">Halo </h1>
                     <h4 className="header">Playing vs Bot </h4>
                     <h4 className="header">Name: {playerName} </h4>
-                    <div className="score-single">Score : {counter*10}</div>
+                    <div className="single-score">Score : {counter*10}</div>
                     <div className="score">Player Turn :
                         {
                             isPlaying? 'You' : 'Bot'
                         }
                     </div>
                 </div>
-                <div className="GridContainer">
+                <div className="single-gridContainer">
                     {
-                        [...Array(25)].map((x, i) => <div key={i} onClick={clickHandler} className="box" id={(i+1).toString()} /> )
+                        [...Array(25)].map((x, i) => <div key={i} onClick={clickHandler} className="single-box" id={(i+1).toString()} /> )
                     }
                 </div>
                 {
