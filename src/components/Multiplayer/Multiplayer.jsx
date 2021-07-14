@@ -88,7 +88,13 @@ const Multiplayer = (props) => {
           newPatList.push(value);
           setState({ ...state, newPatternList: newPatList });
           // state.newPatternList.push(value);
-          document.getElementById(value).style.backgroundColor = "lightgreen";
+            const col = document.getElementById(value).style.backgroundColor;
+            const colorArray = col.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/i)
+            console.log(colorArray)
+            if(colorArray === null) document.getElementById(value).style.backgroundColor = 'rgb(0,255,0,0.9 )';
+            else{
+                document.getElementById(value).style.backgroundColor = `rgb(${parseInt(colorArray[1]) + 100}, 255, ${parseInt(colorArray[3]) + 100} )`;
+            }
           // clickCount += 1;
           console.log(state.newPatternList);
           socket.emit("click", state);
