@@ -14,6 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* font-size: 2.2rem; */
     /* vertical-align: middle; */
 }
 
@@ -30,7 +31,7 @@ a{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    vertical-align: middle;
+    /* vertical-align: middle; */
     text-align: center;
 }
 
@@ -38,6 +39,9 @@ a{
     height: 20%;
     transition: background-color 0.5s ease;
     border: 1px solid white; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
@@ -80,7 +84,16 @@ input {
   } 
 
   @media only screen and (max-width: 768px){
+      /* .container{
+          font-size: 1.8rem;
+      } */
       .items{
-          width: 85%;
+          width: 300px;
+      }
+  }
+
+  @media only screen and (max-width: 1200px) and (min-width: 769px){
+      .items{
+        width: 450px;
       }
   }
