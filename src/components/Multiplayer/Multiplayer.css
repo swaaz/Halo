@@ -14,6 +14,11 @@
   justify-content: space-around;
 }
 
+.multi-header{
+  margin: 0;
+}
+
+
 .multi-gameInfo{
   display: flex;
   flex-direction: column;
@@ -136,6 +141,27 @@
   background-color: #141c27;
 }
 
+.lobbycontainer{
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: stretch;
+  text-align: center;
+}
+
+.lobbyitems{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: stretch;
+  text-align: center;
+}
+.lobbyitem{
+  border: 1px solid white;
+}
+
 input{
   width: 100%;
   height: 100%;
@@ -156,4 +182,79 @@ p{
   margin: 0;
 }
 
+.multino-header{
+  margin: 0;
+}
+.multiturn-header{
+  margin: 0;
+}
 
+@media only screen and (max-width: 1200px) and (min-width: 768px){
+  .multi-gameInfo{
+    font-size: 1.8rem;
+  }
+  .multi-start, .multi-joinstart, .multi-createstart{
+    width: 45%;
+    height: 30%;
+  }
+}
+
+@media only screen and (max-width: 767px){
+  .multi-gameContainer{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      font-size: 1.7rem;
+  }
+  .multi-gridContainer{
+    column-gap: 13px;
+    row-gap: 13px;
+  }
+  .multi-box{
+    position: relative;
+    background: white;
+    width: 15vw;
+    height: 15vw;
+    cursor : pointer;
+    transition : all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+  }
+  
+  .multi-start, .multi-joinstart, .multi-createstart{
+    width: 80%;
+    height: 22%;
+    font-size: 1.4rem;
+  }
+  .multi-header{
+    margin-top: 10%;
+  }
+  .multino-header{
+    margin: 0;
+  }
+  .multi-turn{
+    margin: 10%;
+  }
+  .multiturn-header{
+    margin: 0;
+  }
+  .gamecode{
+    margin-bottom: 15%;
+  }
+  #lobby-header{
+    margin-bottom: 0;
+    font-size: 1.7rem;
+  }
+
+  .lobbycontainer{
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 768px){
+  .multi-gameInfo{
+    font-size: 1.8rem;
+  }
+  .multi-start, .multi-joinstart, .multi-createstart{
+    width: 45%;
+    height: 30%;
+  }
+}
