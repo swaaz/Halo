@@ -29,28 +29,28 @@ const gameLoop = (state) => {
 		state.patternList = state.newPatternList
 		state.newPatternList = []
 		state.gameRound += 1
-		state.gameTurn = (state.gameTurn + 1) % 4;
+		state.gameTurn = (state.gameTurn + 1) % state.playerList.length;
 		while (state.loserList.includes(state.gameTurn))
-			state.gameTurn = (state.gameTurn + 1) % 4;
+			state.gameTurn = (state.gameTurn + 1) % state.playerList.length;
 
-		if (state.loserList.length === 3) {
+		if (state.loserList.length === (state.playerList.length - 1)) {
 			return [true, state]
 		}
-		return [false, state];
+		return [false, false, state];
 	}
 	else {
 		console.log("Player " + state.gameTurn + " made a wrong move!")
 		state.newPatternList = []
 		state.loserList.push(state.gameTurn);
-		state.gameTurn = (state.gameTurn + 1) % 4;
+		state.gameTurn = (state.gameTurn + 1) % state.playerList.length;
 		while (state.loserList.includes(state.gameTurn))
-			state.gameTurn = (state.gameTurn + 1) % 4;
+			state.gameTurn = (state.gameTurn + 1) % state.playerList.length;
 
-		if (state.loserList.length === 3) {
-			return [true, state]
+		if (state.loserList.length === (state.playerList.length - 1)) {
+			return [true, true, state]
 		}
 
-		return [false, state];
+		return [false, true, state];
 	}
 }
 
