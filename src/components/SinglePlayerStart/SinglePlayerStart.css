@@ -1,34 +1,42 @@
 .single-start{
     position: absolute;
-    width: 30%;
-    height: 30%;
+    width: 25%;
+    height: 25%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     background-color: #17212d;
 }
 
 
 
-.start-btn{
+.singlestart-btn{
     transition: background-color 0.5s ease;
     border: 1px solid white;
     width: 50%;
     text-align: center;
     cursor: pointer;
     /* margin-bottom: 10%; */
-    margin-bottom: 10%;
 }
 
+.singlestart-inputdiv{
+    transition: background-color 0.5s ease;
+    border: 1px solid white;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+    /* margin-bottom: 10%; */
+    /* margin-bottom: 10%; */
+}
 /* .btn{
     width: 45%;
 } */
 
-.start{
+/* .start{
     margin-top: 10%;
     margin-bottom: 0;
-}
+} */
 
 input{
     width: 100%;
@@ -41,12 +49,12 @@ input{
     text-align: center;
 }
 
-::placeholder{
+/* ::placeholder{
     color: white;
     opacity: 1;
-}
+} */
 
-.start:active, .start:hover, ::placeholder:active{
+.singlestart-btn:active, .singlestart-btn:hover, ::placeholder:active{
     background-color: white;
     color: rgb(2, 2, 22);
 }
@@ -58,7 +66,7 @@ input{
         font-size: 90%; 
         text-align: center;
     }
-    .start-btn{
+    .singlestart-btn{
         width: 70%;
         /* margin-bottom: 15%; */
     }
@@ -70,7 +78,7 @@ input{
         /* font-size: 80%;  */
         text-align: center;
     }
-    /* .start-btn{
+    /* .singlestart-btn{
         width: 30%;
         margin-bottom: 15%;
     } */
@@ -82,7 +90,7 @@ input{
         /* font-size: 80%;  */
         text-align: center;
     }
-    /* .start-btn{
+    /* .singlestart-btn{
         width: 30%;
         margin-bottom: 15%;
     } */
