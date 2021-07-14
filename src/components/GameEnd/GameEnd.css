@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background-color: #17212d;
+    background-color: #141c27;
 }
 
 /* .game-end-item1, .game-end-item2{
@@ -42,7 +42,7 @@
 
 .gameend-option:hover{
     background-color: white;
-    color: rgb(2, 2, 22);
+    color: #141c27;
 }
 
 .gameend-option1{
