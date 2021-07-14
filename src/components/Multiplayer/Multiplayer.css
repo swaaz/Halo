@@ -28,8 +28,6 @@
   justify-items: center;
   column-gap: 10px;
   row-gap: 10px;
-  /* width: 70vw;
-  height: 70vh; */
 }
 .multi-box{
   position: relative;
@@ -47,7 +45,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  background-color: #17212d;
+  background-color: #141c27;
 }
 .multistart-createinput{
   transition: background-color 0.5s ease;
@@ -63,10 +61,8 @@
   transition: background-color 0.5s ease;
   border: 1px solid white;
   width: 70%;
-  /* height: 10%; */
   text-align: center;
   cursor: pointer;
-  /* margin-bottom: 10%; */
   /* margin-bottom: 10%; */
 }
 .multistart-container{
@@ -125,7 +121,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  background-color: #17212d;
+  background-color: #141c27;
+  text-align: center;
 }
 
 .multi-joinstart{
@@ -136,7 +133,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  background-color: #17212d;
+  background-color: #141c27;
 }
 
 input{
@@ -155,12 +152,8 @@ input{
   opacity: 1;
 }
 
-/* input:focus::placeholder {
-  cursor: pointer;
-  color: white;
-  background-color: aliceblue;
-} */
-
-
+p{
+  margin: 0;
+}
 
 
