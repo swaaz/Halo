@@ -273,10 +273,10 @@ const Multiplayer = (props) => {
     <div>
       <div className="multi-gameContainer">
         <div className="multi-gameInfo">
-          <h1 className="header">Halo </h1>
-          <h4 className="header">Player Number: {playerId} </h4>
-          <h4 className="header">{checkTurn()}</h4>
-          <h4 className="header">
+          <h1 className="multi-header">Halo </h1>
+          <h4 className="multino-header">Player Number: {playerId} </h4>
+          <h4 className="header multi-turn">{checkTurn()}</h4>
+          <h4 className="multiturn-header">
             Player Turn: {state.gameTurn >= 0 ? state.gameTurn : ""}
           </h4>
           {/* <button className="header" id="newGameButton" onClick={newGame}>
@@ -299,7 +299,7 @@ const Multiplayer = (props) => {
           {/* <button className="score" id="joinGameButton" onClick={handleSubmit}>
             join game
           </button> */}
-          <div>Game code: {gameCode} </div>
+          <div className="gamecode">Game code: {gameCode} </div>
         </div>
 
         {/* <div className="gameContainer"> */}
@@ -323,16 +323,13 @@ const Multiplayer = (props) => {
         </div>
         {/* </div> */}
 
-        <div>
-          <h3>In-Lobby:</h3>
-          <div className="items">
+        <div className="lobbycontainer">
+          <h3 id="lobby-header">In-Lobby:</h3>
+          <div className="lobbyitems">
             {state
               ? state.playerList.map((playerName, index) => {
-                  return (
-                    <div className="item" id={"lobby-item" + index}>
-                      {playerName}
-                    </div>
-                  );
+                  return <div className="lobbyitem" id={"lobby-item"+index} >{playerName}</div>;
+
                 })
               : ""}
           </div>
