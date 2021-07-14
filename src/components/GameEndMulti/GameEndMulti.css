@@ -11,9 +11,6 @@
     color: white;
 }
 
-/* .game-end-item1, .game-end-item2{
-    margin-bottom: 5%;
-} */
 .multiend{
     position: absolute;
     width: 32%;
@@ -32,10 +29,7 @@
     text-align: center;
     width: 100%;
 }
-/* .link{
-    width: 50%;
-    text-decoration: none;
-} */
+
 .multiend-linkHome{
     width: 30%;
     text-decoration: none;
@@ -74,12 +68,3 @@
         font-size: 90%;
     }
 }
-
-/* #cardHeight{
-    height: 30%;
-    padding: 10px 0;
-} */
-/* #replay{
-    width: 45%;
-    cursor: pointer;
-} */
