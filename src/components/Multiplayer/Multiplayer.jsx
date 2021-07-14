@@ -5,6 +5,9 @@ import openSocket from "socket.io-client";
 import GameEndMulti from "../GameEndMulti/GameEndMulti";
 import useSound from 'use-sound';
 import clickSound from '../../assets/audio/click.mp3';
+import Sound from 'react-sound';
+import bgMusic from '../../assets/audio/bg.mp3';
+
 
 const socket = openSocket("http://127.0.0.1:5000", {
   withCredentials: true,
@@ -12,6 +15,8 @@ const socket = openSocket("http://127.0.0.1:5000", {
 
 const Multiplayer = (props) => {
     const [clickPlay] = useSound(clickSound);
+    const [isMusicPlaying, setIsMusicPlaying] = useState(true);
+    
 
   const [playerData, setPlayerData] = useState({
     name: "",
@@ -83,7 +88,13 @@ const Multiplayer = (props) => {
           newPatList.push(value);
           setState({ ...state, newPatternList: newPatList });
           // state.newPatternList.push(value);
-          document.getElementById(value).style.backgroundColor = "lightgreen";
+            const col = document.getElementById(value).style.backgroundColor;
+            const colorArray = col.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/i)
+            console.log(colorArray)
+            if(colorArray === null) document.getElementById(value).style.backgroundColor = 'rgb(0,255,0,0.9 )';
+            else{
+                document.getElementById(value).style.backgroundColor = `rgb(${parseInt(colorArray[1]) + 100}, 255, ${parseInt(colorArray[3]) + 100} )`;
+            }
           // clickCount += 1;
           console.log(state.newPatternList);
           socket.emit("click", state);
@@ -245,6 +256,16 @@ const Multiplayer = (props) => {
 
   return (
     <div>
+      <Sound url={bgMusic} playStatus={isMusicPlaying? Sound.status.PLAYING : Sound.status.STOPPED} loop={true} />
+      <div className="speaker">
+          {
+              isMusicPlaying?
+              <img className="speakerIcon" src={require("../../assets/icons/unmute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(false)} />
+              :
+              <img className="speakerIcon" src={require("../../assets/icons/mute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(true)} />
+
+          }
+      </div>
       <div className="gameContainer">
         <div className="gameInfo">
           <h1 className="header">Halo </h1>
