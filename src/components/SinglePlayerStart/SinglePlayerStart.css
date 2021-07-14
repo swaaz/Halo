@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background-color: #17212d;
+    background-color: #141c27;
 }
 .singlestart-btn{
     transition: background-color 0.5s ease;
@@ -39,7 +39,7 @@ input{
 
 .singlestart-btn:active, .singlestart-btn:hover, ::placeholder:active{
     background-color: white;
-    color: rgb(2, 2, 22);
+    color: #141c27;
 }
 
 @media only screen and (max-width: 768px) {
