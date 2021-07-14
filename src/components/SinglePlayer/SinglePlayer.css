@@ -1,27 +1,27 @@
-.gameContainer{
+.single-gameContainer{
     color: white;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    /* top:0;
+    /* width: 100%;
+    height: 100%; */
+    position: absolute;
+    top:0;
     bottom: 0;
     left: 0;
-    right: 0;  	 */
-    margin: 10vh auto; 
+    right: 0;  	
+    /* margin: 10vh auto;  */
     display: flex;
     align-items: center;
     justify-content: space-around;
   }
-  .speaker{
+  .single-speaker{
     position: absolute;
     top: 10px;
     right: 10px;
     cursor: pointer;
   }
-  .speakerIcon{
+  .single-speakerIcon{
     width: 65%;
   }
-  .gameInfo{
+  .single-gameInfo{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +32,7 @@
     margin: 0;
   } */
   
-  .GridContainer{
+  .single-gridContainer{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
@@ -43,15 +43,15 @@
     /* width: 40vw;
     height: 60vh; */
   }
-  .box{
+  .single-box{
     position: relative;
     background: white;
     width: 7vw;
-    height: 7vh;
+    height: 7vw;
     cursor : pointer;
     transition : all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   }
-  .boxGreen{
+  .single-boxGreen{
     position: relative;
     background: green;
     width: 100px;
@@ -59,27 +59,27 @@
     cursor : pointer;
     transition : all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   }
-  .box:hover{
+  .single-box:hover{
     background: #6AC055;
     transition : all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   }
 
   @media only screen and (max-width: 850px) and (min-width: 769px){
-    .gameContainer {
+    .single-gameContainer {
       width: 100%;
       height: 100%;
       text-align: center;
     }
 
-      .gameInfo{
+      .single-gameInfo{
         width: 30%;
         height: 30%;
       }
-      .GridContainer{
+      .single-gridContainer{
         column-gap: 10px;
         row-gap: 10px;
       }
-      .box{
+      .single-box{
         width: 60px;
         height: 60px;
       }
@@ -88,31 +88,31 @@
 
   @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    .gameContainer {
+    .single-gameContainer {
       display: flex;
       flex-direction: column;
     }
-    .GridContainer{
+    .single-gridContainer{
       column-gap: 10px;
       row-gap: 10px;
     }
-    .box{
+    .single-box{
       width: 55px;
       height: 55px;
     }
-    .headerhalo{
+    .single-headerhalo{
       margin-bottom: 0;
     }
     .playerturn{
       margin-bottom: 20px;
     }
-    .speaker{
+    .single-speaker{
       position: absolute;
       top: 30px;
       right: -30px;
       cursor: pointer;
     }
-    .speakerIcon{
+    .single-speakerIcon{
       width: 50%;
     }
     
@@ -120,12 +120,12 @@
   }
 
   @media only screen and (max-width: 1100px) and (min-width: 850px){
-    .gameContainer {
+    .single-gameContainer {
       width: 100%;
       height: 100%;
       text-align: center;
     }
-      .box{
+      .single-box{
         width: 70px;
         height: 70px;
       }
