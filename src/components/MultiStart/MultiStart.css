@@ -1,14 +1,21 @@
 .multiPlayerStart{
-    width: 100%;
-    height: 100%;
-}
-.multiroom{
-    height: 400px;
+    width: 320px;
+    height: 200px;
     position: absolute;
     top:0;
     bottom: 0;
     left: 0;
-    right: 0;  	
+    right: 0;
+    margin: 20% 0 0 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    background-color: #141c27;
+    color: white;
+}
+/* .multiroom{     	
     margin: auto; 
     display: flex;
     flex-direction: column;
@@ -25,12 +32,13 @@
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-}
+} */
 
 .multi-item{  
+    cursor: pointer;
     transition: background-color 0.5s ease;
     border: 1px solid white; 
-    width: 100%;
+    width: 80%;
     height: 20%;
     text-align: center;
 }
@@ -39,7 +47,7 @@ input{
     width: 100%;
     height: 100%;
     border: none;
-    background-color: transparent;
+    background-color: white;
     outline: none;
     font-family: inherit;
     font-size: inherit;
@@ -47,7 +55,7 @@ input{
 }
 
 ::placeholder{
-    color: white;
+    color: #141c27;
     opacity: 1;
 }
 
@@ -74,9 +82,10 @@ p{
     display: flex;
     justify-content: space-around;
     align-items: center;
-  	
+    
 }
 
-.inputRoom{
+/* .inputRoom{
     width: 30%;
-}
+} */
+
