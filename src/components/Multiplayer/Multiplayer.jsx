@@ -241,10 +241,10 @@ const Multiplayer = (props) => {
     itemActive();
   };
 
-  const playerLost = () => {
-    console.log("You lost!");
-    alert("You lost! :( :(");
-  };
+  // const playerLost = () => {
+  //   console.log("You lost!");
+  //   alert("You lost! :( :(");
+  // };
 
   // Just a function to alert if it is the client's turn
   const checkTurn = () => {
@@ -271,7 +271,17 @@ const Multiplayer = (props) => {
 
   return (
     <div>
+      <Sound url={bgMusic} playStatus={isMusicPlaying? Sound.status.PLAYING : Sound.status.STOPPED} loop={true} />
       <div className="multi-gameContainer">
+      <div className="single-speaker">
+                    {
+                        isMusicPlaying?
+                        <img className="single-speakerIcon" src={require("../../assets/icons/unmute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(false)} />
+                        :
+                        <img className="single-speakerIcon" src={require("../../assets/icons/mute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(true)} />
+
+                    }
+                </div>
         <div className="multi-gameInfo">
           <h1 className="multi-header">Halo </h1>
           <h4 className="multino-header">Player Number: {playerId} </h4>
