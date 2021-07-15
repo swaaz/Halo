@@ -11,7 +11,7 @@
 .singlestart-btn{
     transition: background-color 0.5s ease;
     border: 1px solid white;
-    width: 50%;
+    width: 60%;
     text-align: center;
     cursor: pointer;
     /* margin-bottom: 10%; */
@@ -20,7 +20,7 @@
 .singlestart-inputdiv{
     transition: background-color 0.5s ease;
     border: 1px solid white;
-    width: 50%;
+    width: 60%;
     text-align: center;
     cursor: pointer;
     /* margin-bottom: 10%; */

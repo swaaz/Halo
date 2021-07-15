@@ -3,6 +3,8 @@ var cors = require('cors')
 const mongoose = require('mongoose')
 const Score = require('./models/Score')
 let { io } = require('./gameServer/server')
+const dotenv = require('dotenv');
+dotenv.config();
 
 // Express App for Single Player Leaderboard
 const express = require('express')
@@ -17,7 +19,7 @@ const server = require('http').createServer(app)
 io = io.listen(server);
 
 // Connect to Mongodb database server for Leaderboards
-mongoose.connect('mongodb://localhost/Halo', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(`${process.env.DATABASEURI}`, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 db.on('error', (error) => console.log(error))
 db.once('open', () => console.log('Connected to database'))
@@ -27,7 +29,7 @@ app.use(express.json())
 
 // Options for Express CORS errors 
 var corsOptions = {
-	origin: 'http://127.0.0.1:3000',
+	origin: 'https://dreamy-wozniak-85db22.netlify.app/',
 	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
