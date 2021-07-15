@@ -1,58 +1,72 @@
-.game-end{
+.multiend-container{
     position: absolute;
-    width: 400px;
-    height: 30%;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: #17212d;
+    justify-content: space-around;
+    color: white;
 }
 
-.game-end-item1, .game-end-item2{
-    margin-bottom: 5%;
-}
-
-.game-end-options{
+.multiend{
+    position: absolute;
+    width: 350px;
+    height: 35%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    background-color: #141c27;
+  }
+.multiend-options{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
     text-align: center;
-    width: 80%;
+    width: 100%;
 }
-.link{
-    width: 50%;
+
+.multiend-linkHome{
+    width: 30%;
     text-decoration: none;
 }
-.linkHome{
-    width: 50%;
-    text-decoration: none;
-}
-.option{
+.multiend-option{
     transition: background-color 0.5s ease;
     border: 1px solid white;
-    width: 90%;
+    /* width: 100%; */
 }
 
-@media only screen and (max-width: 1100px) and (min-width: 850px){
-    .game-end{
-        width: 350px;
-    }
+.multiend-option1{
+    cursor: pointer;
+    width: 30%
 }
+
+.multiend-option2{
+    width: 100%;
+}
+
+
+.multiend-option:hover{
+    background-color: white;
+    color: #141c27;
+}
+#rank{
+    
+}
+
+/* @media only screen and (max-width: 1200px) and (min-width: 900px){
+    .multiend-container{
+        width: 70%;
+    }
+} */
 
 @media only screen and (max-width: 768px){
-    .game-end{
-        width: 300px;
-        height: 25%;
-        font-size: 90%;
+    .multi-gameContainer{
+        display: flex;
+        flex-direction: column;
     }
-}
-
-#cardHeight{
-    height: 30%;
-    padding: 10px 0;
-}
-#replay{
-    width: 45%;
-    cursor: pointer;
 }

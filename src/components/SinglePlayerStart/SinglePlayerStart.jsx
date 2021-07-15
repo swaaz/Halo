@@ -6,12 +6,12 @@ const SinglePlayerStart = (props) => {
 
     return (
         <div className="single-start">
-            <div className="start-btn start"><input type="text" value={playerName} placeholder="Enter Name" onChange={(e) => setPlayerName(e.target.value)}></input></div>
+            <div className="singlestart-inputdiv"><input type="text" value={playerName} placeholder="Enter Name" onChange={(e) => setPlayerName(e.target.value)}></input></div>
             <div onClick={() => {
                 if(playerName !== "")
                     props.onStart(playerName)
                 }} 
-                className="start-btn btn">
+                className="singlestart-btn">
                     START GAME
             </div>
         </div>
