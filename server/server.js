@@ -20,11 +20,11 @@ io.on('connection', client => {
 		let [gameOver, playerLost, gameState] = gameLoop(state);
 
 		console.log(gameState);
-		if(gameOver) {
+		if (gameOver) {
 			io.to(gameState.roomId).emit("gameOver", gameState);
 		}
 		else {
-			if(playerLost) {
+			if (playerLost) {
 				client.emit("playerLost");
 			}
 
@@ -117,4 +117,11 @@ io.on('connection', client => {
 	client.on('cleanGrid', handleClean);
 })
 
+
 io.listen(process.env.PORT || 5000);
+
+module.exports = {
+	state,
+	clientRooms,
+	io,
+}
