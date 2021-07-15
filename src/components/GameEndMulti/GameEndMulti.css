@@ -20,6 +20,7 @@
     align-items: center;
     justify-content: space-evenly;
     background-color: #141c27;
+    font-size: 90%;
   }
 .multiend-options{
     display: flex;
@@ -42,7 +43,7 @@
 
 .multiend-option1{
     cursor: pointer;
-    width: 30%
+    width: 35%
 }
 
 .multiend-option2{
@@ -54,9 +55,9 @@
     background-color: white;
     color: #141c27;
 }
-#rank{
+/* #rank{
     
-}
+} */
 
 /* @media only screen and (max-width: 1200px) and (min-width: 900px){
     .multiend-container{
@@ -68,5 +69,9 @@
     .multi-gameContainer{
         display: flex;
         flex-direction: column;
+    }
+
+    .multiend{
+        font-size: 90%;
     }
 }
