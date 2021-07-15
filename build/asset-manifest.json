@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.dda02162.chunk.css",
+    "main.js": "/static/js/main.44b7b31d.chunk.js",
+    "main.js.map": "/static/js/main.44b7b31d.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5d57bba3.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5d57bba3.js.map",
+    "static/js/2.cd6458a7.chunk.js": "/static/js/2.cd6458a7.chunk.js",
+    "static/js/2.cd6458a7.chunk.js.map": "/static/js/2.cd6458a7.chunk.js.map",
+    "static/js/3.81ed48f2.chunk.js": "/static/js/3.81ed48f2.chunk.js",
+    "static/js/3.81ed48f2.chunk.js.map": "/static/js/3.81ed48f2.chunk.js.map",
+    "static/js/4.409a3d2a.chunk.js": "/static/js/4.409a3d2a.chunk.js",
+    "static/js/4.409a3d2a.chunk.js.map": "/static/js/4.409a3d2a.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.dda02162.chunk.css.map": "/static/css/main.dda02162.chunk.css.map",
+    "static/js/2.cd6458a7.chunk.js.LICENSE.txt": "/static/js/2.cd6458a7.chunk.js.LICENSE.txt",
+    "static/js/3.81ed48f2.chunk.js.LICENSE.txt": "/static/js/3.81ed48f2.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/ArcadeClassic.ccc1142c.woff",
+    "static/media/DeathSound.0b47bade.mp3": "/static/media/DeathSound.0b47bade.mp3",
+    "static/media/bg.e9a6f034.mp3": "/static/media/bg.e9a6f034.mp3",
+    "static/media/click.7db1e633.mp3": "/static/media/click.7db1e633.mp3"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5d57bba3.js",
+    "static/js/2.cd6458a7.chunk.js",
+    "static/css/main.dda02162.chunk.css",
+    "static/js/main.44b7b31d.chunk.js"
+  ]
+}

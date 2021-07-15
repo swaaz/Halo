@@ -8,7 +8,7 @@ import clickSound from "../../assets/audio/click.mp3";
 import Sound from "react-sound";
 import bgMusic from "../../assets/audio/bg.mp3";
 
-const socket = openSocket("http://127.0.0.1:5000", {
+const socket = openSocket("https://mighty-plateau-81359.herokuapp.com/", {
   withCredentials: true,
 });
 
@@ -273,12 +273,12 @@ const Multiplayer = (props) => {
     <div>
       <Sound url={bgMusic} playStatus={isMusicPlaying? Sound.status.PLAYING : Sound.status.STOPPED} loop={true} />
       <div className="multi-gameContainer">
-      <div className="single-speaker">
+      <div className="multi-speaker">
                     {
                         isMusicPlaying?
-                        <img className="single-speakerIcon" src={require("../../assets/icons/unmute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(false)} />
+                        <img className="multi-speakerIcon" src={require("../../assets/icons/unmute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(false)} />
                         :
-                        <img className="single-speakerIcon" src={require("../../assets/icons/mute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(true)} />
+                        <img className="multi-speakerIcon" src={require("../../assets/icons/mute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(true)} />
 
                     }
                 </div>

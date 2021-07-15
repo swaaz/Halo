@@ -3,7 +3,7 @@ const { makeid } = require('./utils')
 
 let io = require('socket.io')({
 	cors: {
-		origin: "http://127.0.0.1:3000",
+		origin: "https://dreamy-wozniak-85db22.netlify.app/",
 		credentials: true,
 		// methods: ["GET", "POST"]
 		methods: ["*"]
