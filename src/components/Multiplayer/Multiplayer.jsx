@@ -273,12 +273,12 @@ const Multiplayer = (props) => {
     <div>
       <Sound url={bgMusic} playStatus={isMusicPlaying? Sound.status.PLAYING : Sound.status.STOPPED} loop={true} />
       <div className="multi-gameContainer">
-      <div className="single-speaker">
+      <div className="multi-speaker">
                     {
                         isMusicPlaying?
-                        <img className="single-speakerIcon" src={require("../../assets/icons/unmute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(false)} />
+                        <img className="multi-speakerIcon" src={require("../../assets/icons/unmute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(false)} />
                         :
-                        <img className="single-speakerIcon" src={require("../../assets/icons/mute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(true)} />
+                        <img className="multi-speakerIcon" src={require("../../assets/icons/mute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(true)} />
 
                     }
                 </div>
