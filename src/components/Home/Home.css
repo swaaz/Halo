@@ -84,9 +84,9 @@ input {
   } 
 
   @media only screen and (max-width: 768px){
-      /* .container{
-          font-size: 1.8rem;
-      } */
+      .container{
+          font-size: 30px;
+      }
       .items{
           width: 300px;
       }
