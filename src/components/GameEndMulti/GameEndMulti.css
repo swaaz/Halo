@@ -20,6 +20,7 @@
     align-items: center;
     justify-content: space-evenly;
     background-color: #141c27;
+    font-size: 90%;
   }
 .multiend-options{
     display: flex;
