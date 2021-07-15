@@ -2,7 +2,7 @@ const PORT = process.env.PORT || 5000
 var cors = require('cors')
 const mongoose = require('mongoose')
 const Score = require('./models/Score')
-let { io } = require('./gameServer/server')
+let io = require('./gameServer/server')
 const dotenv = require('dotenv');
 dotenv.config();
 
