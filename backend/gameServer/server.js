@@ -5,8 +5,8 @@ let io = require('socket.io')({
 	cors: {
 		origin: "https://dreamy-wozniak-85db22.netlify.app/",
 		credentials: true,
-		// methods: ["GET", "POST"]
-		methods: ["*"]
+		methods: ["GET", "POST"]
+		// methods: ["*"]
 	}
 });
 
