@@ -1,7 +1,7 @@
 const { initGame, gameLoop } = require('./game');
 const { makeid } = require('./utils')
 
-const io = require('socket.io')({
+let io = require('socket.io')({
 	cors: {
 		origin: "http://127.0.0.1:3000",
 		credentials: true,
@@ -118,7 +118,7 @@ io.on('connection', client => {
 })
 
 
-io.listen(process.env.PORT || 5000);
+// io.listen(process.env.PORT || 5000);
 
 module.exports = {
 	state,
