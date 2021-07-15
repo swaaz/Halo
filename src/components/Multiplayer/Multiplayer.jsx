@@ -8,7 +8,7 @@ import clickSound from "../../assets/audio/click.mp3";
 import Sound from "react-sound";
 import bgMusic from "../../assets/audio/bg.mp3";
 
-const socket = openSocket("https://60eff1e4327251dddb9a4ed6--determined-blackwell-c4c8cc.netlify.app/", {
+const socket = openSocket("https://mighty-plateau-81359.herokuapp.com", {
   withCredentials: true,
 });
 

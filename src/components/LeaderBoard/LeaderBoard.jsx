@@ -5,7 +5,7 @@ import axios from 'axios';
 const LeaderBoard = () =>{
     const [scoreData, setScoreData] = useState([]);
     useEffect(() => {
-        axios.get('https://60eff1e4327251dddb9a4ed6--determined-blackwell-c4c8cc.netlify.app//leaderboard')
+        axios.get('https://mighty-plateau-81359.herokuapp.com/')
         .then((res)=> setScoreData(res.data))
         .catch((err)=> console.log(err))
     }, [])
