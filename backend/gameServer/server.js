@@ -1,7 +1,14 @@
 const { initGame, gameLoop } = require('./game');
 const { makeid } = require('./utils')
 
-let io = require('socket.io')();
+let io = require('socket.io')({
+	cors: {
+		origin: "*",
+		credentials: true,
+		// methods: ["GET", "POST"]
+		methods: ["*"]
+	}
+});
 
 
 const state = {};
