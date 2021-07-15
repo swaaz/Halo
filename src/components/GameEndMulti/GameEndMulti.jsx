@@ -7,6 +7,7 @@ const GameEndMulti = (props) => {
         <div id="cardHeight" className="multiend-container">
             <div className="multiend">
             <div className="multiend-over">GAME OVER :(</div>
+                <div id="rank" className="multiend-over">Rank</div>
             <div className="scoreList">
                 {
                     props.ranks.map((val,index) => <p>{index+1}. {val.name}</p>)
