@@ -84,7 +84,7 @@ const SinglePlayer = () => {
                     deathPlay();
                     document.getElementById(e.target.id).style.backgroundColor = '#f00';
                     setIsGameOver(true);
-                    axios.post('http://127.0.0.1:5000/add', {
+                    axios.post('https://60eff1e4327251dddb9a4ed6--determined-blackwell-c4c8cc.netlify.app/add', {
                         name: playerName,
                         score: counter*10,
                     })
