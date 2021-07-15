@@ -8,7 +8,7 @@ import clickSound from "../../assets/audio/click.mp3";
 import Sound from "react-sound";
 import bgMusic from "../../assets/audio/bg.mp3";
 
-const socket = openSocket("https://mighty-plateau-81359.herokuapp.com/", {
+const socket = openSocket("https://hidden-wave-90372.herokuapp.com/", {
   withCredentials: true,
 });
 

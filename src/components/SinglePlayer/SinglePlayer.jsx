@@ -84,7 +84,7 @@ const SinglePlayer = () => {
                     deathPlay();
                     document.getElementById(e.target.id).style.backgroundColor = '#f00';
                     setIsGameOver(true);
-                    axios.post('https://mighty-plateau-81359.herokuapp.com/add', {
+                    axios.post('https://hidden-wave-90372.herokuapp.com/add', {
                         name: playerName,
                         score: counter*10,
                     })
