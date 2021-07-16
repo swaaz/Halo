@@ -4,7 +4,8 @@
   "description": "Backend Server for Halo game",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "swaaz",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "express": "^4.17.1",
     "mongodb": "^3.6.10",
     "mongoose": "^5.13.2",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "socket.io": "^4.1.3"
   }
 }
