@@ -7,8 +7,10 @@ import useSound from "use-sound";
 import clickSound from "../../assets/audio/click.mp3";
 import Sound from "react-sound";
 import bgMusic from "../../assets/audio/bg.mp3";
+const { REACT_APP_API } = process.env;
 
-const socket = openSocket(`${process.env.API_URL}/`, {
+
+const socket = openSocket(`${REACT_APP_API}/`, {
   withCredentials: true,
 });
 

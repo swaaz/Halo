@@ -8,6 +8,7 @@ import SinglePlayerStart from '../SinglePlayerStart/SinglePlayerStart'
 import clickSound from '../../assets/audio/click.mp3';
 import deathSound from '../../assets/audio/DeathSound.mp3';
 import axios from 'axios';
+const { REACT_APP_API } = process.env;
 const SinglePlayer = () => {
     const [clickPlay] = useSound(clickSound);
     const [deathPlay] = useSound(deathSound);
@@ -46,7 +47,8 @@ const SinglePlayer = () => {
             console.log(colorArray)
             if(colorArray === null) document.getElementById(item.toString()).style.backgroundColor = 'rgb(0,255,0,0.9 )';
             else{
-                document.getElementById(item.toString()).style.backgroundColor = `rgb(${parseInt(colorArray[1]) + 100}, 255, ${parseInt(colorArray[3]) + 100} )`;
+                // document.getElementById(item.toString()).style.backgroundColor = `rgb(${parseInt(colorArray[1]) + 100}, 255, ${parseInt(colorArray[3]) + 100} )`;
+                document.getElementById(item.toString()).style.backgroundColor = 'yellow';
             }
     }
     // function perform bot's turn
@@ -85,7 +87,7 @@ const SinglePlayer = () => {
                     deathPlay();
                     document.getElementById(e.target.id).style.backgroundColor = '#f00';
                     setIsGameOver(true);
-                    axios.post(`${process.env.API_URL}/add`, {
+                    axios.post(`${REACT_APP_API}/add`, {
                         name: playerName,
                         score: counter*10,
                     })
