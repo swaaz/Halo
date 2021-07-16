@@ -8,7 +8,7 @@ import clickSound from "../../assets/audio/click.mp3";
 import Sound from "react-sound";
 import bgMusic from "../../assets/audio/bg.mp3";
 
-const socket = openSocket("https://hidden-wave-90372.herokuapp.com/", {
+const socket = openSocket(`${process.env.API_URL}/`, {
   withCredentials: true,
 });
 
@@ -94,9 +94,10 @@ const Multiplayer = (props) => {
             document.getElementById(value).style.backgroundColor =
               "rgb(0,255,0,0.9 )";
           else {
-            document.getElementById(value).style.backgroundColor = `rgb(${
-              parseInt(colorArray[1]) + 100
-            }, 255, ${parseInt(colorArray[3]) + 100} )`;
+            // document.getElementById(value).style.backgroundColor = `rgb(${
+            //   parseInt(colorArray[1]) + 100
+            // }, 255, ${parseInt(colorArray[3]) + 100} )`;
+            document.getElementById(value).style.backgroundColor = 'yellow';
           }
           // clickCount += 1;
           console.log(state.newPatternList);

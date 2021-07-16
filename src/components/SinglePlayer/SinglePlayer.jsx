@@ -73,7 +73,8 @@ const SinglePlayer = () => {
             console.log(colorArray)
             if(colorArray === null) document.getElementById(e.target.id).style.backgroundColor = 'rgb(0, 255, 0)';
             else{
-                document.getElementById(e.target.id).style.backgroundColor = `rgb(${parseInt(colorArray[1]) + 100}, 255, ${parseInt(colorArray[3]) + 100} )`;
+                // document.getElementById(e.target.id).style.backgroundColor = `rgb(${parseInt(colorArray[1]) + 100}, 255, ${parseInt(colorArray[3]) + 100} )`;
+                document.getElementById(e.target.id).style.backgroundColor = 'yellow';
             }
 
 
@@ -84,7 +85,7 @@ const SinglePlayer = () => {
                     deathPlay();
                     document.getElementById(e.target.id).style.backgroundColor = '#f00';
                     setIsGameOver(true);
-                    axios.post('https://hidden-wave-90372.herokuapp.com/add', {
+                    axios.post(`${process.env.API_URL}/add`, {
                         name: playerName,
                         score: counter*10,
                     })

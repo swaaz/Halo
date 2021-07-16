@@ -5,7 +5,7 @@ import axios from 'axios';
 const LeaderBoard = () =>{
     const [scoreData, setScoreData] = useState([]);
     useEffect(() => {
-        axios.get('https://hidden-wave-90372.herokuapp.com/leaderboard')
+        axios.get(`${process.env.API_URL}/leaderboard`)
         .then((res)=> setScoreData(res.data))
         .catch((err)=> console.log(err))
     }, [])
