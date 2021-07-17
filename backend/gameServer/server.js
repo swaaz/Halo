@@ -1,9 +1,11 @@
 const { initGame, gameLoop } = require('./game');
 const { makeid } = require('./utils')
+const dotenv = require('dotenv');
+dotenv.config();
 
 let io = require('socket.io')({
 	cors: {
-		origin: `http://127.0.0.1:3000`,
+		origin: `${process.env.FRONTEND_URL}`,
 		credentials: true,
 		// methods: ["GET", "POST"]
 		methods: ["*"]
