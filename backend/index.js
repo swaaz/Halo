@@ -55,14 +55,25 @@ app.post('/add', async (req, res) => {
 		name: req.body.name,
 		score: req.body.score
 	});
-
-	try {
-		const newScore = await data.save()
-		res.status(201).json(newScore)
+	let scores ;
+	try{
+		scores = await Score.find({ "name" : data.name, "score" : data.score })
+		
 	}
-	catch (err) {
-		res.status(400).json(err)
+	catch(err){
+		res.json({message: err.message})
 	}
+	if(scores.length){
+		try {
+			const newScore = await data.save()
+			res.status(201).json(newScore)
+		}
+		catch (err) {
+			res.status(400).json(err)
+		}
+	}
+	else res.status(200).json({message: "Score already exists"})
+	
 })
 
 // End API end-points
