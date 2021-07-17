@@ -26,10 +26,9 @@ db.once('open', () => console.log('Connected to database'))
 
 app.use(cors())
 app.use(express.json())
-
 // Options for Express CORS errors 
 var corsOptions = {
-	origin: 'https://dreamy-wozniak-85db22.netlify.app/',
+	origin: `${process.env.FRONTEND_URL}/`,
 	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
@@ -38,6 +37,7 @@ var corsOptions = {
 app.get('/', (req, res) => res.send('Hey!! This is Halo API'))
 
 app.get('/leaderboard', async (req, res) => {
+	console.log('Getting Leaderboard')
 	try {
 		const scores = await Score.find().limit(10).sort({ score: -1 })
 		res.json(scores)
@@ -68,4 +68,4 @@ app.post('/add', async (req, res) => {
 // End API end-points
 
 // Make server Listen to the PORT
-server.listen(PORT, () => console.log(`Server is running at 5000...`))
+server.listen(PORT, () => console.log(`Server is running at ${PORT}..`))

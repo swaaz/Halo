@@ -8,7 +8,7 @@ import SinglePlayerStart from '../SinglePlayerStart/SinglePlayerStart'
 import clickSound from '../../assets/audio/click.mp3';
 import deathSound from '../../assets/audio/DeathSound.mp3';
 import axios from 'axios';
-const { REACT_APP_API } = process.env;
+const { REACT_APP_APIS } = process.env;
 const SinglePlayer = () => {
     const [clickPlay] = useSound(clickSound);
     const [deathPlay] = useSound(deathSound);
@@ -87,7 +87,7 @@ const SinglePlayer = () => {
                     deathPlay();
                     document.getElementById(e.target.id).style.backgroundColor = '#f00';
                     setIsGameOver(true);
-                    axios.post(`${REACT_APP_API}/add`, {
+                    axios.post(`${REACT_APP_APIS}/add`, {
                         name: playerName,
                         score: counter*10,
                     })
@@ -138,7 +138,7 @@ const SinglePlayer = () => {
                 <div className="single-gameInfo">
                     <h1 className="single-headerhalo">Halo </h1>
                     <h4 className="playervs-header header">Playing vs Bot </h4>
-                    <h4 className="header">Name: {playerName} </h4>
+                    <h4 className="name-header">Name: {playerName} </h4>
                     <div className="single-score">Score : {counter*10}</div>
                     <div className="score">Player Turn :
                         {

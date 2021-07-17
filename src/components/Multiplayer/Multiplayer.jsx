@@ -7,10 +7,10 @@ import useSound from "use-sound";
 import clickSound from "../../assets/audio/click.mp3";
 import Sound from "react-sound";
 import bgMusic from "../../assets/audio/bg.mp3";
-const { REACT_APP_API } = process.env;
+const { REACT_APP_APIS } = process.env;
 
 
-const socket = openSocket(`${REACT_APP_API}/`, {
+const socket = openSocket(`${REACT_APP_APIS}/`, {
   withCredentials: true,
 });
 
@@ -276,7 +276,7 @@ const Multiplayer = (props) => {
     <div>
       <Sound url={bgMusic} playStatus={isMusicPlaying? Sound.status.PLAYING : Sound.status.STOPPED} loop={true} />
       <div className="multi-gameContainer">
-      <div className="multi-speaker">
+        <div className="multi-speaker">
                     {
                         isMusicPlaying?
                         <img className="multi-speakerIcon" src={require("../../assets/icons/unmute.png").default} alt="speaker" onClick={() => setIsMusicPlaying(false)} />
@@ -286,44 +286,11 @@ const Multiplayer = (props) => {
                     }
                 </div>
         <div className="multi-gameInfo">
-          <h1 className="multi-header">Halo </h1>
-          <h4 className="multino-header">Player Number: {playerId} </h4>
-          <h4 className="header multi-turn">{checkTurn()}</h4>
-          <h4 className="multiturn-header">
-            Player Turn: {state.gameTurn >= 0 ? state.gameTurn : ""}
-          </h4>
-          {/* <button className="header" id="newGameButton" onClick={newGame}>
-            new game
-          </button> */}
-          {/* <input
-            className="score"
-            id="playerName"
-            type="text"
-            value={playerName}
-            onChange={handleNameChange}
-          />
-          <input
-            className="score"
-            id="gameCodeInput"
-            type="text"
-            value={gameCode}
-            onChange={handleChange}
-          /> */}
-          {/* <button className="score" id="joinGameButton" onClick={handleSubmit}>
-            join game
-          </button> */}
+          <h1 className="multi-headerhalo">Halo </h1>
           <div className="gamecode">Game code: {gameCode} </div>
         </div>
 
-        {/* <div className="gameContainer"> */}
-        {/* <div className="gameInfo">
-
-                    <h1 className="header headerhalo">Halo </h1>
-                    <h4 className="header">Playing vs Bot </h4>
-                    <div className="score">Score</div>
-                    <div className="score">Player Turn : swaaz
-                    </div>
-                </div> */}
+        
         <div className="multi-gridContainer">
           {[...Array(25)].map((x, i) => (
             <div
