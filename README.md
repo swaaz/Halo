@@ -2,7 +2,6 @@
 
 You can play and Enjoy on your own or play with friends upto 4 players at a time!
 
-Currently hosted at this url [Play the game](https://dreamy-wozniak-85db22.netlify.app/)
 
 ## How to Play
 
@@ -36,3 +35,6 @@ Currently hosted at this url [Play the game](https://dreamy-wozniak-85db22.netli
   This **should** be it to get it working on your local machine.
 
 PS: The leaderboard server uses MongoDB, so the backend server may crash if you dont have MongoDB installed!
+
+## Found a Bug?
+Great!! We are too broke to give a Bounty 🙃 Click [here](https://github.com/swaaz/Halo/issues/new?assignees=swaaz%2C+RachithaRai%2C+suhanacharya&labels=bug&template=bug_report.md&title=) to create an issue and fill the necessary details. 
