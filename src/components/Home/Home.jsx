@@ -10,9 +10,10 @@ const Home = () => {
                 <div className="items">
                     <div className="item"> <Link className="home-link" to="/single">Single Player</Link></div>
                     <div className="item"> <Link className="home-link" to='/multi'>MultiPlayer </Link></div>
+                    <div className="item"> <Link className="home-link" to="/instructions">Instructions </Link></div>
                     <div className="itemlast">
                         <div className="iteml item1"> <Link to="/leader">LeaderBoard</Link> </div>
-                        <div className="iteml item2">Exit</div>
+                        <div className="iteml item2"><Link to="/about"> About</Link></div>
                     </div>
                 </div>
             </div>

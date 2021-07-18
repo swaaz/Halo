@@ -1,9 +1,11 @@
 const { initGame, gameLoop } = require('./game');
 const { makeid } = require('./utils')
+const dotenv = require('dotenv');
+dotenv.config();
 
 let io = require('socket.io')({
 	cors: {
-		origin: "https://dreamy-wozniak-85db22.netlify.app",
+		origin: `${process.env.FRONTEND_URL}`,
 		credentials: true,
 		// methods: ["GET", "POST"]
 		methods: ["*"]

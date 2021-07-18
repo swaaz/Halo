@@ -14,13 +14,14 @@
 .multiend{
     position: absolute;
     width: 350px;
-    height: 35%;
+    /* height: 35%; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     background-color: #141c27;
     font-size: 90%;
+    padding: 10px 0 20px 0;
   }
 .multiend-options{
     display: flex;
@@ -29,6 +30,7 @@
     justify-content: space-evenly;
     text-align: center;
     width: 100%;
+    margin-top: 15px;
 }
 
 .multiend-linkHome{
@@ -55,9 +57,10 @@
     background-color: white;
     color: #141c27;
 }
-/* #rank{
-    
-} */
+#rank{
+    margin: 10px;
+}
+
 
 /* @media only screen and (max-width: 1200px) and (min-width: 900px){
     .multiend-container{
@@ -65,13 +68,23 @@
     }
 } */
 
-@media only screen and (max-width: 768px){
-    .multi-gameContainer{
+@media only screen and (max-width: 670px){
+    /* .multi-gameContainer{
         display: flex;
         flex-direction: column;
-    }
+    } */
 
     .multiend{
         font-size: 90%;
+    }
+}
+@media only screen and (max-width: 420px){
+    /* .multi-gameContainer{
+        font-size: 80%;
+    } */
+
+    .multiend{
+        font-size: 25px;
+        width: 300px;
     }
 }
