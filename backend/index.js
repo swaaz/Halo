@@ -50,7 +50,6 @@ app.get('/leaderboard', async (req, res) => {
 app.post('/add', async (req, res) => {
 
 
-	// console.log("added name :)"
 	const data = new Score({
 		name: req.body.name,
 		score: req.body.score
@@ -63,7 +62,7 @@ app.post('/add', async (req, res) => {
 	catch(err){
 		res.json({message: err.message})
 	}
-	if(scores.length){
+	if(!scores.length){
 		try {
 			const newScore = await data.save()
 			res.status(201).json(newScore)
