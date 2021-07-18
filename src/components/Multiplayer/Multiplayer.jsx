@@ -250,13 +250,13 @@ const Multiplayer = (props) => {
   // };
 
   // Just a function to alert if it is the client's turn
-  const checkTurn = () => {
-    if (state.gameTurn === playerId) {
-      return "Your Turn!";
-    } else {
-      return "";
-    }
-  };
+  // const checkTurn = () => {
+  //   if (state.gameTurn === playerId) {
+  //     return "Your Turn!";
+  //   } else {
+  //     return "";
+  //   }
+  // };
   console.log(gameCode);
 
   // Server's Event Listeners

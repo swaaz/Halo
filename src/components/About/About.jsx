@@ -18,7 +18,7 @@ const About = () => {
                         <img className="AboutImage" src={suhan} alt="suhan" />
                     </div>
                     <div className="AboutButton">
-                        <p className="AboutButtonText">Suhan</p>
+                        <a rel="noreferrer" target="_blank" href='https://github.com/suhanacharya' ><p className="AboutButtonText">Suhan</p></a>
                     </div>
                 </div>
                 <div className="AboutColumn">
@@ -26,7 +26,7 @@ const About = () => {
                         <img className="AboutImage" src={swaaz} alt="Swaaz" />
                     </div>
                     <div className="AboutButton">
-                        <p className="AboutButtonText">Swasthik</p>
+                        <a rel="noreferrer" target="_blank"  href='https://www.linkedin.com/in/swasthik-shetty-b50928174/' ><p className="AboutButtonText">Swasthik</p></a>
                     </div>
                 </div>
                 <div className="AboutColumn">
@@ -34,12 +34,12 @@ const About = () => {
                         <img className="AboutImage" src={rachitha} alt="rachitha" />
                     </div>
                     <div className="AboutButton">
-                        <p className="AboutButtonText">Rachitha</p>
+                        <a rel="noreferrer" target="_blank" href='https://github.com/RachithaRai' ><p className="AboutButtonText">Rachitha</p></a>
                     </div>
                 </div>
             </div>
             <div className="AboutFooter">
-            A game we community folks built in a hackathon.
+                A game we community folks built in a Hackathon.
             </div>
         </div>
         </div>

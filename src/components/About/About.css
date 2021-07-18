@@ -156,7 +156,9 @@
     } */
     .AboutFooter{
         margin-bottom: 20px;
-        font-size: 30px;
+        font-size: 25px;
+        word-spacing: 5px;
+
     }
 
 }

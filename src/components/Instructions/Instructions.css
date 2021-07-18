@@ -52,6 +52,7 @@ img {
 @media (max-width: 600px) {
 	.instructions {
 		font-size: 28px;
+		word-spacing: 5px;
 	}
 
 	.image-border {
