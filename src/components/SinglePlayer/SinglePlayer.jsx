@@ -8,7 +8,7 @@ import SinglePlayerStart from '../SinglePlayerStart/SinglePlayerStart'
 import clickSound from '../../assets/audio/click.mp3';
 import deathSound from '../../assets/audio/DeathSound.mp3';
 import axios from 'axios';
-const { REACT_APP_APIS } = process.env;
+const { REACT_APP_API } = process.env;
 const SinglePlayer = () => {
     const [clickPlay] = useSound(clickSound);
     const [deathPlay] = useSound(deathSound);
@@ -87,7 +87,7 @@ const SinglePlayer = () => {
                     deathPlay();
                     document.getElementById(e.target.id).style.backgroundColor = '#f00';
                     setIsGameOver(true);
-                    axios.post(`${REACT_APP_APIS}/add`, {
+                    axios.post(`${REACT_APP_API}/add`, {
                         name: playerName,
                         score: counter*10,
                     })

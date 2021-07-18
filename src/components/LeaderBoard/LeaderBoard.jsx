@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import './LeaderBoard.css'
 import axios from 'axios';
-const { REACT_APP_APIS } = process.env;
+const { REACT_APP_API } = process.env;
 
-console.log(REACT_APP_APIS)
 const LeaderBoard = () =>{
 
     const [scoreData, setScoreData] = useState([]);
     useEffect(() => {
-        axios.get(`${REACT_APP_APIS}/leaderboard`)
+        axios.get(`${REACT_APP_API}/leaderboard`)
         .then((res)=> setScoreData(res.data))
         .catch((err)=> console.log(err))
     }, [])
