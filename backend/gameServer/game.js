@@ -1,4 +1,4 @@
-
+// Create an empty Game State
 const createGameState = () => {
 	return {
 		roomId: "",
@@ -11,11 +11,13 @@ const createGameState = () => {
 	};
 }
 
+// Instantiate new Game
 const initGame = () => {
 	const state = createGameState()
 	return state;
 }
 
+// Calculate the game status
 const gameLoop = (state) => {
 	if (!state) {
 		return;
@@ -39,7 +41,7 @@ const gameLoop = (state) => {
 		return [false, false, state];
 	}
 	else {
-		console.log("Player " + state.gameTurn + " made a wrong move!")
+		//console.log("Player " + state.gameTurn + " made a wrong move!")
 		state.newPatternList = []
 		state.loserList.push(state.gameTurn);
 		state.gameTurn = (state.gameTurn + 1) % state.playerList.length;
@@ -54,6 +56,7 @@ const gameLoop = (state) => {
 	}
 }
 
+// Check if two arrays are equal
 const checkArrayEqual = (arr1, arr2) => {
 	for (let i = 0; i < arr1.length; i++) {
 		if (arr1[i] !== arr2[i])

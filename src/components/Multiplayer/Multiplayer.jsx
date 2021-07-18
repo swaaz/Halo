@@ -78,7 +78,7 @@ const Multiplayer = (props) => {
   // to handle when someone clicks on the grid
   const clickHandler = (e) => {
     if (!state.loserList.includes(playerId)) {
-      console.log(e.target.id);
+      // console.log(e.target.id);
       const value = e.target.id;
       if (state.gameTurn === playerId) {
         clickPlay();
@@ -91,7 +91,7 @@ const Multiplayer = (props) => {
           const colorArray = col.match(
             /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/i
           );
-          console.log(colorArray);
+          // console.log(colorArray);
           if (colorArray === null)
             document.getElementById(value).style.backgroundColor =
               "rgb(0,255,0,0.9 )";
@@ -102,7 +102,7 @@ const Multiplayer = (props) => {
             document.getElementById(value).style.backgroundColor = 'yellow';
           }
           // clickCount += 1;
-          console.log(state.newPatternList);
+          // console.log(state.newPatternList);
           socket.emit("click", state);
         }
         if (state.gameRound === state.newPatternList.length) {
@@ -113,14 +113,14 @@ const Multiplayer = (props) => {
         }
       } else {
         alert("Not your turn!");
-        console.log("Not your turn!");
+        // console.log("Not your turn!");
       }
     }
   };
 
   // to create new game
   const newGame = () => {
-    console.log("new game started");
+    // console.log("new game started");
     socket.emit("newGame", { playerName: playerData.name });
   };
 
@@ -163,17 +163,17 @@ const Multiplayer = (props) => {
   const handleGameCode = (gameCodeValue) => {
     // gameCodeDisplay.innerText = gameCode;
     setGameCode(gameCodeValue);
-    console.log(gameCodeValue);
+    // console.log(gameCodeValue);
   };
 
   // In case of unknown gameCode
   const handleUnknownCode = () => {
-    console.log("Unknown Code!");
+    // console.log("Unknown Code!");
   };
 
   // In case the room has 4 players already
   const handleTooManyPlayers = () => {
-    console.log("Too Many players!");
+    // console.log("Too Many players!");
   };
 
   // To update the state after every turn
@@ -181,11 +181,11 @@ const Multiplayer = (props) => {
     setState(newState);
     console.clear();
     if (state.playerList.length !== 0) itemActive();
-    console.log(state);
+    // console.log(state);
   };
 
   const handleStop = (state) => {
-    console.log("Player " + state.gameTurn + " made a wrong move!");
+    // console.log("Player " + state.gameTurn + " made a wrong move!");
   };
 
   // End Game condition where 3 of 4 players lose
@@ -207,7 +207,7 @@ const Multiplayer = (props) => {
       playerId: state.gameTurn,
     });
     rankList.reverse();
-    console.log(rankList);
+    // console.log(rankList);
     setRanks(rankList);
     // console.log("Game Over! " + state.playerList[state.gameTurn] + " WON!");
   };
@@ -257,7 +257,7 @@ const Multiplayer = (props) => {
   //     return "";
   //   }
   // };
-  console.log(gameCode);
+  // console.log(gameCode);
 
   // Server's Event Listeners
   socket.on("delayClick", delayClickFunction);

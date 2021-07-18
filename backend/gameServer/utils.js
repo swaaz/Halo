@@ -1,3 +1,4 @@
+// Generate a new game ID
 const makeid = (length) => {
 	var result = '';
 	var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';

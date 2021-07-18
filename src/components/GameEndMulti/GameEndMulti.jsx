@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './GameEndMulti.css';
 const GameEndMulti = (props) => {
-    console.log(props)
     return (
         <div id="cardHeight" className="multiend-container">
             <div className="multiend">

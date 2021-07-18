@@ -37,7 +37,6 @@ var corsOptions = {
 app.get('/', (req, res) => res.send('Hey!! This is Halo API'))
 
 app.get('/leaderboard', async (req, res) => {
-	console.log('Getting Leaderboard')
 	try {
 		const scores = await Score.find().limit(10).sort({ score: -1 })
 		res.json(scores)
