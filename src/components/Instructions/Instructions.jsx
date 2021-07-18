@@ -67,7 +67,7 @@ const Home = () => {
         </div>
       </div>
       <div id="home-button" className="item">
-        <Link className="home-link button" to="/home">
+        <Link className="home-link button" to="/">
           Home
         </Link>
         <br />
