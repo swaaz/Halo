@@ -58,3 +58,9 @@ img {
 		width: 100%;
 	}
 }
+
+@media (max-width: 300px){
+	.instructions{
+		font-size: 75%;
+	}
+}

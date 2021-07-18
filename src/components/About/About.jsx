@@ -6,9 +6,12 @@ import rachitha from '../../assets/creators/rachitha.jpg';
 
 const About = () => {
     return (
+        <div className="about">
         <div className="AboutSection">
-            <h1 className="AboutTitle">Halo</h1>
-            <h4 className="AboutHeading">Creators</h4>
+            <div className="about-headings"> 
+                <h1 className="AboutTitle">Halo</h1>
+                <h4 className="AboutHeading">Creators</h4>
+            </div>
             <div className="AboutRow">
                 <div className="AboutColumn">
                 <div className="AboutProfile">
@@ -35,7 +38,10 @@ const About = () => {
                     </div>
                 </div>
             </div>
-            <p className="AboutFooter">A game built for a Hackathon in a Hackathon.</p>
+            <div className="AboutFooter">
+            A game we community folks built in a hackathon.
+            </div>
+        </div>
         </div>
     )
 }

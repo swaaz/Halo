@@ -1,17 +1,25 @@
-.AboutSection{
-    min-height: 100vh;
+.about{
     width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.AboutSection{
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     color: white;
     text-align: center;
-    overflow-y: auto;
+    /* overflow-y: scroll; */
 }
 
 .AboutTitle{
-    margin-bottom: 50px;
+    margin: 10px 0 10px 0;
 }
 
 .AboutHeading{
@@ -19,13 +27,15 @@
 }
 
 .AboutRow{
-    flex: 1;
+    position: relative;
+    /* flex: 1; */
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 80%;
+    width: 100%;
     justify-content: space-evenly;
     margin: 0 auto;
+    max-height: 100%;
 }
 
 .AboutColumn{
@@ -33,8 +43,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 20vh;
-    margin: 0 40px;
+    height: 100%;
+    /* margin: 0 40px; */
 }
 
 .AboutProfile{
@@ -69,10 +79,10 @@
     transition : all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
 
 }
-.AboutFooter{
+/* .AboutFooter{
     margin-bottom: 50px;
-}
-@media only screen and (max-width: 1024px) {
+} */
+@media only screen and (max-width: 1024px){
     .AboutProfile{
         
         height: 100px !important;
@@ -82,26 +92,25 @@
 }
 
 @media only screen and (max-width: 850px) {
-    .AboutColumn{
+    /* .AboutColumn{
         margin: 0 20px;
-    }
+    } */
     .AboutFooter{
         font-size: 30px;
     }
-    .AboutRow{
+    /* .AboutRow{
         
         width: 90%;
         
-    }
+    } */
 }
 
-@media only screen and (max-width: 725px) {
+/* @media only screen and (max-width: 725px) {
     .AboutColumn{
        
         margin: 0 10px;
     }
-    AboutProfile{
-        
+    AboutProfile{       
         min-height: 300px;
         min-width: 200px;
         border: 2px solid white;
@@ -109,31 +118,58 @@
     .AboutFooter{
         font-size: 30px;
     }
-
-}
-@media only screen and (max-width: 670px) {
-    .AboutSection{
-        overflow-y: auto;
+    .about{
+        overflow-y: scroll;
     }
+
+} */
+@media only screen and (max-width: 799px) {
+    .about{
+        overflow-y: scroll;
+    }
+
+    .AboutSection{
+        justify-content: space-evenly;
+    }
+    .about-headings{
+        margin: 0 0 10px 0;
+    }
+    /* .AboutSection{
+        height: 100%;
+        overflow-y: scroll;
+    } */
     .AboutRow{
         flex-direction: column;
-        width: 100%;
-        height: 100%;
+        /* justify-content: space-evenly; */
+        /* width: 100%;
+        height: 100%; */
         
     }
     .AboutColumn{
-       
-        width: 100%;
-        height: 100%;
+        /* justify-content: space-evenly; */
+        margin-bottom: 30px;
     }
-    AboutProfile{
-        
-        min-height: 200px;
-        min-width: 200px;
+    /* .AboutProfile{       
+        height: 100px;
+        width: 100px;
         border: 2px solid white;
-    }
+    } */
     .AboutFooter{
+        margin-bottom: 20px;
         font-size: 30px;
     }
 
+}
+
+@media only screen and (max-height: 545px){
+    .about{
+        overflow-y: scroll;
+    }
+
+    .AboutFooter{
+        margin: 20px 0 20px 0;
+    }
+    .about-headings{
+        margin: 0 0 20px 0;
+    }
 }
