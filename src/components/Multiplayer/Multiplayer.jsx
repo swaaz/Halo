@@ -131,9 +131,9 @@ const Multiplayer = (props) => {
 
       socket.emit("joinGame", {
         playerName: playerData.name,
-        roomName: playerData.roomId,
+        roomName: playerData.roomId.toUpperCase(),
       });
-      setGameCode(playerData.roomId);
+      setGameCode(playerData.roomId.toUpperCase());
     } else {
       alert("enter room id");
     }
