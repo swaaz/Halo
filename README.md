@@ -37,4 +37,4 @@ You can play and Enjoy on your own or play with friends upto 4 players at a time
 PS: The leaderboard server uses MongoDB, so the backend server may crash if you dont have MongoDB installed!
 
 ## Found a Bug?
-Great!! We are too broke to give a Bounty 🙃 Click [here](https://github.com/swaaz/Halo/issues/new/choose) to create an issue and fill the necessary details. 
+Great!! We are too broke to give a Bounty 🙃 Click [here](https://github.com/swaaz/Halo/issues/new?assignees=&labels=&template=bug_report.md&title=) to create an issue and fill the necessary details. 
