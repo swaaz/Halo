@@ -34,6 +34,11 @@ img {
 	width: 100%;
 }
 
+#home-button{
+	margin-bottom: 50px;
+	padding: 0 30px;
+}
+
 .image-border {
 	align-self: center;
 	width: 75%;
