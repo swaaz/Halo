@@ -1,4 +1,4 @@
-# Halo - A web Game
+# Halo - An Open-Source Web-App based elemenatry game
 
 You can play and Enjoy on your own or play with friends upto 4 players at a time!
 
